@@ -1,0 +1,49 @@
+[
+  {
+    "slug": "david-lizom-portfolio",
+    "name": "David Lizom motion designer",
+    "summary": "David Lizom is a talented freelance Illustrator and Motiond Designer from Hungary. He needed an online portfolio to boost his freelancing career as an Illustrator & Motion Designer.",
+    "my_role": "We worked together on the design and thanks to Figma's collaboration function I learned a lot about how to work closely with someone who has experience in design.He needed internationalization to reach both Hungarian and English speaking costumers. I'm a big fan of Vue.js so I knew vue-i18n will be the perfect solution for this problem. He also wanted people to reach him using a contact form on his website. For this initially, I wanted to use SendGrid, but unfortunately, He already paid for a hosting platform for a year, so we ended up using PHP for the form submit. Transitions were made with GSAP and Vue Transitions. Eventually, he's going to extend with a gallery and some case studies where I'm planning to use Contentful as a CMS.  ",
+    "pic_one": "lizom_1",
+    "pic_two": "lizom_2",
+    "pic_three": "lizom_3",
+    "next_project": "cassiopeia-plant-shop",
+    "git": "https://github.com/olaszm/lizom_portfolio",
+    "url": "https://davidlizom.com/"
+  },
+  {
+    "slug": "cassiopeia-plant-shop",
+    "name": "Cassiopeia Plant Shop",
+    "summary": "Cassiopeia is a small plant shop for home & office plants. I enjoy using mock-ups and UI kits so I can focus more on functionality. I've found this cool minimalistic Figma kit so I built it.",
+    "my_role": "I've done a couple of e-commerce websites from scratch before but never integrated any payment system, so for this project, I used Stripe's Stripe.js library. The library has many functions, but thankfully their documentations is easy to use and very straightforward, so it did not cause any problems to integrate the payment method(Of course ,it's just a test API, it doesn't charge you). On the front-end I used Vue with vuex and router, for CMS I used Contentful and I'm hosting on heroku.(sorry ☹)",
+    "pic_one": "cassio_1",
+    "pic_two": "cassio_2",
+    "pic_three": "cassio_3",
+    "next_project": "personal-portfolio",
+    "git": "https://github.com/olaszm/cassiopeia_shop",
+    "url": "https://cassiopeia-shop.herokuapp.com/"
+  },
+  {
+    "slug": "personal-portfolio",
+    "name": "Personal Portfolio",
+    "summary": "This is my personal online portfolio with some interactive elements.",
+    "my_role": "I've designed and coded this website entirely. I do love minimalist design, but this time I felt like something is missing, so I tried to integrate a few interactive elements that can grab the user's attention. I've gone through www.awwwards.com for some inspiration and tried to break down and tweak other people's creative solutions. ",
+    "pic_one": "me_1",
+    "pic_two": "me_2",
+    "pic_three": "me_3",
+
+    "next_project": "david-lizom-portfolio"
+  },
+  {
+    "slug": "jako-bakery",
+    "name": "Jakó Cukrászda",
+    "summary": "Jakó Cukrászda is a small bakery/ice-cream shop established in 1989 in my hometown.",
+    "my_role": "I discovered that their website does not reflect the excellent work they do. The website has some performance issues and accessibility issues. The text is hard to read and hard to navigate. I tried a minimalist,clean approach for the design. I used  HTML and SASS with Vanilla JavaScript for the front-end and Node.js for the back-end.",
+    "pic_one": "jako_1",
+    "pic_two": "jako_2",
+    "pic_three": "jako_3",
+    "next_project": "david-lizom-portfolio",
+    "git": "https://github.com/olaszm/jako-cukraszda",
+    "url": "https://jako-bakery.herokuapp.com"
+  }
+]
