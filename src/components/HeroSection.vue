@@ -8,9 +8,7 @@
           in London
         </h1>
         <p ref="link">
-          <router-link to="/about" class="link hoverable"
-            >Want to know me better?</router-link
-          >
+          <router-link to="/about" class="link hoverable">Want to know me better?</router-link>
         </p>
       </div>
     </div>
@@ -50,6 +48,7 @@ export default {
       h1 {
         font-size: 1.5rem;
         font-weight: normal;
+        max-width: 750px;
       }
       p {
         margin-top: 1rem;

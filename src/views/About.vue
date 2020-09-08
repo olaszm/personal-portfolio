@@ -8,8 +8,20 @@
       </p>
       <p>
         Love to create interesting, playful and interactive web applications. I
-        am a big fan of Vue.js thanks to the Coding Garden community. In my
-        freetime I like to listen to Lex Fridman’s podcast, watch other coding
+        am a big fan of Vue.js thanks to the
+        <a
+          class="hoverable"
+          href="https://coding.garden/#/"
+          rel="noopener"
+          target="_blank"
+        >Coding Garden community</a>. I'm passionate about anything related to technology and learning new skills and tools. In my
+        freetime I like to listen to
+        <a
+          class="hoverable"
+          href="https://lexfridman.com/podcast/"
+          target="_blank"
+          rel="noopener"
+        >Lex Fridman’s</a> podcast, watch other coding
         related things and rock climb!
       </p>
       <p>
@@ -18,9 +30,9 @@
       </p>
     </div>
     <div class="about__contact">
-      <a href="mailto:martin1olasz@gmail.com" class="hoverable">email me</a>
+      <a href="mailto:martin1olasz@gmail.com" class="hoverable">say hello</a>
       <span>◦</span>
-      <a href="/" class="hoverable">resume</a>
+      <a href="../../martin_olasz_CV.pdf" class="hoverable">resume</a>
     </div>
   </div>
 </template>
@@ -30,12 +42,16 @@
 .about {
   margin-top: 3rem;
   margin-bottom: 5rem;
+  width: 60%;
   &__me {
     margin-bottom: 2rem;
     min-width: 250px;
+    a {
+      color: $primary;
+    }
     p {
       margin: 1rem 0;
-      line-height: 140%;
+      line-height: 145%;
     }
     @media (max-width: $mobile) {
       width: 100%;
@@ -58,3 +74,4 @@
   }
 }
 </style>
+
