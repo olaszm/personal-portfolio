@@ -30,27 +30,6 @@ export default {
         content:
           "developer,freelance,front-end,website,vue,javascript,html,css,london,",
       },
-      {
-        name: "og:title",
-        content: "Martin Olasz Junior Front End Developer",
-      },
-      {
-        name: "og:type",
-        content: "Personal Website,Projects,Freelance work, Website",
-      },
-      {
-        name: "og:image",
-        content: "@/assets/me_preview.png",
-      },
-      {
-        name: "og:url",
-        content: "http://martinolasz.dev",
-      },
-      {
-        name: "og:description",
-        content:
-          "Martin Olasz is a Junior Frontend Developer avaiable for freelance and full-time job offers",
-      },
     ],
   },
 
