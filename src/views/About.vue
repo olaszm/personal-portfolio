@@ -37,6 +37,27 @@
   </div>
 </template>
 
+<script>
+export default {
+  metaInfo: {
+    title: `Martin Olasz Front End Developer`,
+    titleTemplate: "%s | About",
+    meta: [
+      {
+        name: "description",
+        content: ` Hi, My name is Martin and I am a self taught front-end developer from
+        Hungary, based in London looking for freelance and full-time job
+        opportunities.`,
+        vmid: "description",
+      },
+    ],
+  },
+  data() {
+    return {};
+  },
+};
+</script>
+
 <style lang="scss" scoped>
 @import "@/style/_variables.scss";
 .about {

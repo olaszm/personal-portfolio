@@ -61,13 +61,28 @@ import axios from "axios";
 
 export default {
   name: "Project",
+  metaInfo: {
+    title: `Martin Olasz Front End Develiper`,
+    titleTemplate: null,
+    meta: [
+      {
+        name: "description",
+        content: `Project`,
+        vmid: "description",
+      },
+    ],
+  },
   data() {
     return {
       project: {},
       publicPath: process.env.BASE_URL,
     };
   },
-  computed: {},
+  computed: {
+    getProjectName() {
+      return this.project.name;
+    },
+  },
   mounted() {
     axios.get("../db.json").then(({ data }) => {
       let item = data.find((item) => item.slug === this.$route.params.name);
