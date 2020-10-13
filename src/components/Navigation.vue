@@ -3,7 +3,7 @@
     <nav class="wrapper">
       <div class="logo">
         <router-link to="/" v-magnetic class="hoverable">
-          <h2>MO</h2>
+          <img src="@/assets/emblem_white.svg" alt="">
         </router-link>
       </div>
 
@@ -38,6 +38,10 @@ header {
     align-items: center;
     justify-content: space-between;
     .logo {
+      img {
+        height: 40px;
+        width: auto;
+      }
       a {
         &::after {
           display: none;
@@ -46,10 +50,13 @@ header {
     }
   }
   @media (max-width: $mobile) {
-    height: 65px;
+    height: 60px;
     position: fixed;
     top: 0;
+    z-index: 5;
     background-color: $black;
+    box-shadow: 0 0px 10px rgba(255, 255, 255, 0.199);
+
   }
 }
 </style>

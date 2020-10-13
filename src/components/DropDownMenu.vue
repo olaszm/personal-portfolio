@@ -3,8 +3,10 @@
     <div class="overlay__menu wrappe" v-show="isMenuOpen">
       <div class="overlay__menu__inner wrapper">
         <div class="overlay__menu__header">
-          <div class="logo">
-            <h2 v-magnetic>MO</h2>
+          <div  class="logo">
+            <router-link to="/" >
+              <img  src="@/assets/emblem_white.svg" alt="">
+            </router-link>
           </div>
           <span class="close-btn hoverable" @click="closeMenu">
             <img src="@/assets/x.svg" alt="X" />
@@ -137,7 +139,7 @@ export default {
       align-items: flex-start;
       justify-content: center;
       font-family: "Rubik Mono One", sans-serif;
-      margin: 5rem 0;
+      height: 80%;
       li {
         margin-bottom: 0.75em;
         font-size: 2.55rem;
@@ -180,6 +182,18 @@ export default {
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  margin-top: 1rem;
+  .logo {
+    a {
+        &::after {
+          display: none;
+        }
+      }
+    img {
+      height: 45px;
+      width: auto;
+    }
+  }
 }
 
 .overlay__menu__footer {
