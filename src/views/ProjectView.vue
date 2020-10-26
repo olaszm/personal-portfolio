@@ -24,8 +24,8 @@
       </div>
 
       <div class="image__container">
-        <img class="proj-img" :src="`${publicPath}${project.pic_one}.jpeg`" alt />
-        <img class="proj-img" :src="`${publicPath}${project.pic_two}.jpeg`" alt />
+        <img class="proj-img" :src="`${publicPath}${project.pic_one}.webp`" alt />
+        <img class="proj-img" :src="`${publicPath}${project.pic_two}.webp`" alt />
       </div>
 
       <div class="project__my-role">
@@ -33,7 +33,7 @@
         <p>{{ project.my_role }}</p>
       </div>
       <div class="img">
-        <img class="proj-img" :src="`${publicPath}${project.pic_three}.jpeg`" alt />
+        <img class="proj-img" :src="`${publicPath}${project.pic_three}.webp`" alt />
       </div>
 
       <div class="project__other-links">

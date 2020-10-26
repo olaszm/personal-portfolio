@@ -37,8 +37,8 @@
   },
   {
     "slug": "jako-bakery",
-    "name": "Jakó Cukrászda",
-    "summary": "Jakó Cukrászda is a small bakery/ice-cream shop established in 1989 in my hometown.",
+    "name": "Jakó Bakery",
+    "summary": "Jakó Bakery is a small bakery/ice-cream shop established in 1989 in my hometown.",
     "my_role": "I discovered that their website does not reflect the excellent work they do. The website has some performance issues and accessibility issues. The text is hard to read and hard to navigate. I tried a minimalist,clean approach for the design. I used  HTML and SASS with Vanilla JavaScript for the front-end and Node.js for the back-end.",
     "pic_one": "jako_1",
     "pic_two": "jako_2",
