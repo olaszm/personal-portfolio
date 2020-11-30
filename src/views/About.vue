@@ -64,6 +64,9 @@ export default {
   margin-top: 3rem;
   margin-bottom: 5rem;
   width: 60%;
+   @media (max-width: $mobile) {
+      width: 90%;
+    }
   &__me {
     margin-bottom: 2rem;
     min-width: 250px;
