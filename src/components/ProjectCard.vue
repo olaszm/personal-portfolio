@@ -44,7 +44,6 @@ export default {
     align-self: center;
     width: 45%;
     min-width: 300px;
-
     h3 {
       color: $secondary;
       font-size: 1.5rem;
@@ -82,9 +81,9 @@ export default {
   }
   .img {
     height: 100%;
-    width: 80%;
+    width: 75%;
     position: fixed;
-    left: -30%;
+    left: -40%;
     top: 0;
     position: relative;
 
@@ -117,7 +116,7 @@ export default {
   .img {
     order: 2;
     left: unset;
-    right: -30%;
+    right: -40%;
   }
   .project__info {
     @media (max-width: $mobile) {

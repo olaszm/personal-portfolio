@@ -1,5 +1,17 @@
 [
   {
+    "slug": "drinsed-laundry",
+    "name": "Drinsed",
+    "summary": "Drinsed is an UK based company who collects,cleans and delivers laundry directly to your door.",
+    "my_role": "My main role was to implement the client's design and turn it into a modern and fast web application. On the back-end it uses Rails and for the database they used SQL. Fortunately, I could choose my tools to build the frontend, therefore I've used Vue.js. One of the biggest challenges regarding this project was to learn how a Rails application works and reverse engineer that. For hosting, we decided on AWS Amplify, because the backend was already hosted on AWS and they made it super easy to host a Single Page Application. For the payment it uses Stripe.js, state management is handled with Vuex and routing with vue-router. All in all, it was a fun project and I've learned a lot during development.",
+    "pic_one": "drinsed_1",
+    "pic_two": "drinsed_2",
+    "pic_three": "drinsed_3",
+    "next_project": "david-lizom-portfolio",
+    "git": "https://github.com/olaszm/drinsed-laundry",
+    "url": "https://www.drinsed.com/"
+  },
+  {
     "slug": "david-lizom-portfolio",
     "name": "David Lizom motion designer",
     "summary": "David Lizom is a talented freelance Illustrator and Motiond Designer from Hungary. He needed an online portfolio to boost his freelancing career as an Illustrator & Motion Designer.",

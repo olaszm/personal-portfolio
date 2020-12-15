@@ -22,6 +22,13 @@ export default {
     return {
       projects: [
         {
+          name: "Drinsed",
+          details:
+            "Drinsed is an UK based company who collects,cleans and delivers laundry directly to your door.",
+          src: "drinsed_preview.webp",
+          slug: "drinsed-laundry",
+        },
+        {
           name: "David Lizom motion designer",
           details:
             "David Lizom is a talented freelance Illustrator and Motiond Designer from Hungary. He needed an online portfolio to boost his freelancing career as an Illustrator & Motion Designer.",
