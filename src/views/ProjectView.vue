@@ -24,8 +24,8 @@
       </div>
 
       <div class="image__container">
-        <img class="proj-img" :src="`${publicPath}${project.pic_one}.webp`" alt />
-        <img class="proj-img" :src="`${publicPath}${project.pic_two}.webp`" alt />
+        <img class="proj-img" :src="`${publicPath}${project.images[0]}.webp`" alt  @click="openImageViewer(0)"/>
+        <img class="proj-img" :src="`${publicPath}${project.images[1]}.webp`" alt @click="openImageViewer(1)"/>
       </div>
 
       <div class="project__my-role">
@@ -33,7 +33,7 @@
         <p>{{ project.my_role }}</p>
       </div>
       <div class="img">
-        <img class="proj-img" :src="`${publicPath}${project.pic_three}.webp`" alt />
+        <img class="proj-img" :src="`${publicPath}${project.images[2]}.webp`" alt @click="openImageViewer(2)" />
       </div>
 
       <div class="project__other-links">
@@ -50,10 +50,13 @@
         </span>
       </div>
     </div>
+    <!-- <ImageViewer v-if="isImageViewerOpen"  :curr='currentImage' :images="project.images"/> -->
   </div>
 </template>
 
 <script>
+// import ImageViewer from '@/components/ImageViewer'
+import { EventBus } from "@/plugins/eventbus.js";
 import { gsap, ScrollTrigger } from "gsap/all";
 gsap.registerPlugin(ScrollTrigger);
 
@@ -61,6 +64,7 @@ import axios from "axios";
 
 export default {
   name: "Project",
+  // components: {ImageViewer},
   metaInfo: {
     title: `Martin Olasz Front End Develiper`,
     titleTemplate: null,
@@ -74,9 +78,17 @@ export default {
   },
   data() {
     return {
+      currentImage: 0,
+      isImageViewerOpen: false,
       project: {},
       publicPath: process.env.BASE_URL,
     };
+  },
+  methods: {
+    openImageViewer(indx){
+      this.isImageViewerOpen = !this.isImageViewerOpen
+      this.currentImage = indx
+    }
   },
   computed: {
     getProjectName() {
@@ -88,6 +100,11 @@ export default {
       let item = data.find((item) => item.slug === this.$route.params.name);
       this.project = item;
     });
+
+
+    EventBus.$on('toggleImageViewer', (payload)=>{
+      this.isImageViewerOpen =  payload
+    })
 
     // let tl = gsap.timeline({});
 
