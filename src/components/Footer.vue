@@ -39,7 +39,6 @@ export default {};
 <style lang="scss" scoped>
 @import "@/style/_variables.scss";
 .footer {
-  //   background-color: grey;
   font-size: 18px;
   height: 200px;
   &__inner {

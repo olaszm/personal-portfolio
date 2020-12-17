@@ -24,9 +24,13 @@
       </div>
 
       <div class="image__container">
+        <div class="image__container__images">
         <img class="proj-img" :src="`${publicPath}${project.images[0]}.webp`" alt  @click="openImageViewer(0)"/>
         <img class="proj-img" :src="`${publicPath}${project.images[1]}.webp`" alt @click="openImageViewer(1)"/>
+        </div>      
+        <span>Click image to view full size</span>
       </div>
+
 
       <div class="project__my-role">
         <h3>My Role</h3>
@@ -50,12 +54,15 @@
         </span>
       </div>
     </div>
-    <!-- <ImageViewer v-if="isImageViewerOpen"  :curr='currentImage' :images="project.images"/> -->
+
+    <transition name="gallery">
+      <ImageViewer v-if="isImageViewerOpen"  :curr='currentImage' :images="project.images"/>
+    </transition>
   </div>
 </template>
 
 <script>
-// import ImageViewer from '@/components/ImageViewer'
+import ImageViewer from '@/components/ImageViewer'
 import { EventBus } from "@/plugins/eventbus.js";
 import { gsap, ScrollTrigger } from "gsap/all";
 gsap.registerPlugin(ScrollTrigger);
@@ -64,7 +71,7 @@ import axios from "axios";
 
 export default {
   name: "Project",
-  // components: {ImageViewer},
+  components: {ImageViewer},
   metaInfo: {
     title: `Martin Olasz Front End Develiper`,
     titleTemplate: null,
@@ -145,6 +152,14 @@ export default {
 <style lang="scss" scoped>
 @import "@/style/_variables.scss";
 
+
+.gallery-enter-active, .gallery-leave-active {
+  transition: opacity .3s;
+}
+.gallery-enter, .gallery-leave-to {
+  opacity: 0;
+}
+
 .project {
   .inner {
     margin: 5rem 0;
@@ -178,8 +193,13 @@ export default {
         }
       }
     }
-    .image__container {
-      margin: 5rem 0;
+    .image__container{
+      span {
+        font-style: italic;
+        font-size: 0.7em;
+      }
+    }
+    .image__container__images{
       display: flex;
       width: 100%;
       justify-content: space-between;
@@ -204,6 +224,7 @@ export default {
           }
         }
       }
+     
     }
     .img {
       margin: 2rem 0;
