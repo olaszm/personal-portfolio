@@ -8,8 +8,9 @@
       <p>{{ project.details }}</p>
       <router-link
         :to="{ name: 'ProjectView', params: { name: project.slug } }"
+        
       >
-        <span class="hoverable">
+        <span class="hoverable" @click="track">
           see case study
         </span>
       </router-link>
@@ -27,6 +28,15 @@ export default {
     },
     index: { type: Number, required: true },
   },
+  methods : {
+    track(){
+       this.$gtag.event('view_case_study', {
+        'event_category': 'engagement',
+        'event_label': 'See Case Study button clicked',
+        'value': 1
+      })
+    }
+  }
 };
 </script>
 

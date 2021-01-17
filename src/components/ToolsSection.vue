@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <div class="tools__container">
-      <h3>Tools I work with</h3>
+      <h3 ref='section_title'>Tools I work with</h3>
       <div class="tools__row" ref="first_row">
         <div class="tool" v-for="(item, index) in rowItems" :key="index">
           <img
@@ -57,18 +57,20 @@ export default {
     },
   },
   mounted() {
-    const { first_row, second_row } = this.$refs;
+    const { first_row, second_row, section_title } = this.$refs;
+    
+    gsap.from(section_title, {
+      x: '-50%',
+      opacity: 0,
+      delay: 0.5,
+      duration:0.65,
+      ease: 'power3.out'
+    })
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: first_row,
-        start: "start 80%",
-      },
-    });
-
-    tl.from([first_row, second_row], {
+    gsap.from([first_row, second_row], {
       y: "100%",
       opacity: 0,
+      delay: 0.85,
       duration: 0.6,
       ease: "bounce.out",
     });
