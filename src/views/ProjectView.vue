@@ -73,7 +73,7 @@ export default {
   name: "Project",
   components: {ImageViewer},
   metaInfo: {
-    title: `Martin Olasz Front End Develiper`,
+    title: `Martin Olasz Front End Developer`,
     titleTemplate: null,
     meta: [
       {

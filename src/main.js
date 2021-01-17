@@ -8,7 +8,7 @@ Vue.config.productionTip = false;
 
 
 Vue.use(VueGtag, {
-  config: { id: "G-N7B97T4FDT" }
+  config: { id: process.env.VUE_APP_GA_ID }
 },router);
 Vue.use(VueMeta);
 
