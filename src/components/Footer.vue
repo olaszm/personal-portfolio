@@ -11,11 +11,13 @@
             <img
               class="hoverable"
               src="@/assets/github.svg"
+                @click="track('Clicked on GitHub')"
               alt="Github Logo"
             />
           </a>
           <a
             href="https://www.linkedin.com/in/martin-o-a038671b5/"
+            @click="track('Clicked on LinkedIN')"
             target="_blank"
             rel="noopener"
           >
@@ -33,7 +35,17 @@
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    track(param) {
+      this.$gtag.event("check_social", {
+        event_category: "engagement",
+        event_label: param,
+        value: 1,
+      });
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -55,14 +67,18 @@ export default {};
       a {
         display: block;
         color: $secondary;
-        margin: 20px 0 !important;
+        margin: 15px 0;
         &::after {
           background-color: transparent;
         }
       }
       .social {
         display: flex;
+        a {
+          margin: 0rem 0
+        }
         img {
+          height: 40px;       
           &:first-child {
             margin-right: 1em;
           }

@@ -14,15 +14,17 @@
           href="https://coding.garden/#/"
           rel="noopener"
           target="_blank"
-        >Coding Garden community</a>. I'm passionate about anything related to technology and learning new skills and tools. In my
-        freetime I like to listen to
+          >Coding Garden community</a
+        >. I'm passionate about anything related to technology and learning new
+        skills and tools. In my freetime I like to listen to
         <a
           class="hoverable"
           href="https://lexfridman.com/podcast/"
           target="_blank"
           rel="noopener"
-        >Lex Fridman’s</a> podcast, watch other coding
-        related things and rock climb!
+          >Lex Fridman’s</a
+        >
+        podcast, watch other coding related things and rock climb!
       </p>
       <p>
         If you want to work with me, drop me an email so we can discuss about
@@ -32,7 +34,9 @@
     <div class="about__contact">
       <a href="mailto:martin1olasz@gmail.com" class="hoverable">say hello</a>
       <span>◦</span>
-      <a href="../../martin_olasz_CV.pdf" class="hoverable">resume</a>
+      <a href="../../martin_olasz_CV.pdf" class="hoverable" @click="track"
+        >resume</a
+      >
     </div>
   </div>
 </template>
@@ -55,6 +59,15 @@ export default {
   data() {
     return {};
   },
+  methods: {
+    track() {
+      this.$gtag.event("check_resume", {
+        event_category: "engagement",
+        event_label: "Checking out resume",
+        value: 1,
+      });
+    },
+  },
 };
 </script>
 
@@ -64,9 +77,9 @@ export default {
   margin-top: 3rem;
   margin-bottom: 5rem;
   width: 60%;
-   @media (max-width: $mobile) {
-      width: 90%;
-    }
+  @media (max-width: $mobile) {
+    width: 90%;
+  }
   &__me {
     margin-bottom: 2rem;
     min-width: 250px;

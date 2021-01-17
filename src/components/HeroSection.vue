@@ -27,6 +27,7 @@ export default {
       y: "100%",
       opacity: 0,
       duration: 0.5,
+      delay: 0.5,
       ease: "ease-in",
       stagger: 0.45,
     });
