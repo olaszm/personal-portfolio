@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <div class="tools__container">
-      <h3 ref='section_title'>Tools I work with</h3>
+      <h3 ref='section_title'>Some of my favourite tools to work with</h3>
       <div class="tools__row" ref="first_row">
         <div class="tool" v-for="(item, index) in rowItems" :key="index">
           <img

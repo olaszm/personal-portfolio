@@ -2,7 +2,7 @@
   <div class="about wrapper">
     <div class="about__me">
       <p>
-        Hi, My name is Martin and I am a self taught front-end developer from
+        Hi, My name is Martin and I am a front-end developer from
         Hungary, based in London looking for freelance and full-time job
         opportunities.
       </p>

@@ -4,7 +4,7 @@
     <div class="hero__inner wrapper">
       <div class="intro">
         <h1 ref="title">
-          Hello! I’m Martin a passionate self-taught Front-end developer based
+          Hello! I’m Martin a passionate Front-end developer based
           in London
         </h1>
         <p ref="link">
