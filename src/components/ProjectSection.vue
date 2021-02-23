@@ -49,13 +49,13 @@ export default {
           src: "me_preview.webp",
           slug: "personal-portfolio",
         },
-        {
-          name: "Jakó Bakery",
-          details:
-            "Jakó Bakery is a small bakery/ice-cream shop established in 1989 in my hometown.",
-          src: "jako_preview.webp",
-          slug: "jako-bakery",
-        },
+        // {
+        //   name: "Jakó Bakery",
+        //   details:
+        //     "Jakó Bakery is a small bakery/ice-cream shop established in 1989 in my hometown.",
+        //   src: "jako_preview.webp",
+        //   slug: "jako-bakery",
+        // },
       ],
     };
   },
