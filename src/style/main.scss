@@ -35,10 +35,10 @@ li {
 }
 
 .wrapper {
-  width: 60%;
+  width: 75%;
   margin: 0 auto;
   @media (max-width: $widescreen) {
-    width: 60%;
+    width: 75%;
   }
   @media (max-width: $tablet) {
     width: 85%;

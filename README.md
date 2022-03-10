@@ -25,4 +25,4 @@ To run local server
 ## Support & Contribution
 
 
-If you have any tips or advice or issue feel free to contact me.
+If you have any tips, advice or issue feel free to contact me.

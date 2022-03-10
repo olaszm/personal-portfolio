@@ -30,7 +30,7 @@ export default {
       if (!this.isMobile) {
         let cursor = this.$refs.CursorEl;
 
-        let cursorHovers = document.querySelectorAll(".hoverable");
+        let cursorHovers = [...document.querySelectorAll(".hoverable")];
 
         cursorHovers.forEach((item) => {
           item.addEventListener("mouseover", () => {

@@ -1,20 +1,33 @@
 <template>
   <div class="project" :class="index % 2 == 0 ? 'lefty' : ''">
     <div class="img">
-      <img :src="require(`@/assets/${project.src}`)" alt />
+      <img :src="require(`@/assets/${project.image_src}`)" alt />
     </div>
     <div class="project__info">
       <h3>{{ project.name }}</h3>
-      <p>{{ project.details }}</p>
-      <router-link
-        :to="{ name: 'ProjectView', params: { name: project.slug } }"
-        
-      >
-        <span class="hoverable" @click="track">
-          see case study
-        </span>
-      </router-link>
-      <!-- <a class="hoverable" href="#">See case study</a> -->
+      <p>{{ project.summary }}</p>
+
+      <div class="project__info__links">
+        <a
+          v-if="project.git"
+          class="link hoverable animate-link"
+          rel="noopener"
+          :href="project.git"
+          target="_blank"
+          ref="git_ref"
+          >See the code</a
+        >
+        <span class="divider" v-if="project.git && project.url">◦</span>
+        <a
+          class="link hoverable animate-link"
+          v-if='project.url'
+          rel="noopener"
+          :href="project.url"
+          target="_blank"
+          ref="url_ref"
+          >See live version</a
+        >
+      </div>
     </div>
   </div>
 </template>
@@ -28,15 +41,30 @@ export default {
     },
     index: { type: Number, required: true },
   },
-  methods : {
-    track(){
-       this.$gtag.event('view_case_study', {
-        'event_category': 'engagement',
-        'event_label': 'See Case Study button clicked',
-        'value': 1
-      })
-    }
-  }
+  methods: {
+    track() {
+      this.$gtag.event("view_case_study", {
+        event_category: "engagement",
+        event_label: "See Case Study button clicked",
+        value: 1,
+      });
+    },
+  },
+  mounted() {
+    const cursorEl = document.querySelector(".cursor");
+    const gitLinkElement = this.$refs.git_ref;
+    const urlLinkElement = this.$refs.url_ref;
+
+    [gitLinkElement, urlLinkElement].forEach((item) => {
+      if (!item) return;
+      item.addEventListener("mouseover", () => {
+        cursorEl.classList.toggle("cursor-big");
+      });
+      item.addEventListener("mouseleave", () => {
+        cursorEl.classList.toggle("cursor-big");
+      });
+    });
+  },
 };
 </script>
 
@@ -69,7 +97,17 @@ export default {
       color: $primary;
       text-shadow: 2px 2px 10px black;
     }
-
+    &__links {
+      display: flex;
+      justify-content: stretch;
+      gap: 0.25em;
+      a {
+        white-space: nowrap;
+        &::after {
+          height: 0;
+        }
+      }
+    }
     @media (max-width: $mobile) {
       width: 80%;
       min-width: 225px;
@@ -86,6 +124,15 @@ export default {
       }
       a {
         font-size: 0.75rem;
+      }
+      &__links {
+        flex-direction: column;
+        a {
+          margin: 0.45em 0;
+        }
+        .divider {
+          display: none;
+        }
       }
     }
   }
