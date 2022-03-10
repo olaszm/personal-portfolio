@@ -46,15 +46,14 @@ export default {
   },
   methods: {},
   created() {
+
     var userAgent = navigator.userAgent.toLowerCase(),
       width = screen.availWidth,
-      height = screen.availHeight,
-      userIsOnMobileDevice = checkIfUserIsOnMobileDevice(userAgent);
-    if (userIsOnMobileDevice) {
-      this.isMobile = true;
-    } else {
-      this.isMobile = false;
-    }
+      height = screen.availHeight;
+
+
+    this.isMobile = checkIfUserIsOnMobileDevice(userAgent);
+
     function checkIfUserIsOnMobileDevice($userAgent) {
       if ($userAgent.includes("mobi") || $userAgent.includes("tablet")) {
         return true;

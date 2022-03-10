@@ -10,56 +10,26 @@
 </template>
 
 <script>
-import { gsap, ScrollTrigger, CSSPlugin } from "gsap/all";
 
+import { gsap, ScrollTrigger, CSSPlugin } from "gsap/all";
 gsap.registerPlugin(ScrollTrigger, CSSPlugin);
+
 import ProjectCard from "@/components/ProjectCard";
+import axios from "axios";
 export default {
   components: {
     ProjectCard,
   },
   data() {
     return {
-      projects: [
-        {
-          name: "Drinsed",
-          details:
-            "Drinsed is an UK based company who collects,cleans and delivers laundry directly to your door.",
-          src: "drinsed_preview.webp",
-          slug: "drinsed-laundry",
-        },
-        {
-          name: "David Lizom motion designer",
-          details:
-            "David Lizom is a talented freelance Illustrator and Motiond Designer from Hungary. He needed an online portfolio to boost his freelancing career as an Illustrator & Motion Designer.",
-          src: "lizom_preview.webp",
-          slug: "david-lizom-portfolio",
-        },
-        {
-          name: "Cassiopeia plant shop",
-          details:
-            "Cassiopeia is a small plant shop for home & office plants. I enjoy using mock-ups and UI kits so I can focus more on functionality. I've found this cool minimalistic Figma kit so I built it.",
-          src: "cassio_preview.webp",
-          slug: "cassiopeia-plant-shop",
-        },
-        {
-          name: "Personal portfolio",
-          details:
-            "This is my personal online portfolio with some interactive elements.",
-          src: "me_preview.webp",
-          slug: "personal-portfolio",
-        },
-        // {
-        //   name: "Jakó Bakery",
-        //   details:
-        //     "Jakó Bakery is a small bakery/ice-cream shop established in 1989 in my hometown.",
-        //   src: "jako_preview.webp",
-        //   slug: "jako-bakery",
-        // },
-      ],
+      projects: []
     };
   },
   mounted() {
+      axios.get("../db.json").then(({ data }) => {
+      this.projects = data;
+    });
+
     const projects = [...document.querySelectorAll(".project")];
 
     let tl = gsap.timeline({});

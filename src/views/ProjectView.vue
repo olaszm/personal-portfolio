@@ -7,13 +7,14 @@
         <h3>Summary</h3>
         <p>{{ project.summary }}</p>
         <div class="project__summary__links">
-          <a
+          <a  
+            v-if="project.git"
             class="hoverable animate-link"
             rel="noopener"
             :href="project.git"
             target="_blank"
           >See the code</a>
-          <span>◦</span>
+          <span v-if="project.git && project.url" >◦</span>
           <a
             class="hoverable animate-link"
             rel="noopener"
