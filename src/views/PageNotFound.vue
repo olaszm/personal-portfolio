@@ -6,9 +6,7 @@
 
         <div class="flex col">
           <h4>Oops! There is nothing here!</h4>
-          <router-link to="/" class="link hoverable"
-            >Take me back</router-link
-          >
+          <router-link to="/" class="link hoverable">Take me back</router-link>
         </div>
       </div>
     </div>
@@ -19,10 +17,11 @@
 export default {};
 </script>
 
-<style>
+<style lang='scss' scoped>
+@import "@/style/_variables.scss";
 
 .inner {
-      padding-top: 5rem;
+  padding-top: 5rem;
 }
 
 .flex {
@@ -34,9 +33,12 @@ export default {};
 }
 
 .img {
-  height: auto;
   max-height: 375px;
-  width: 75%;
+  height: auto;
+
+  @media (max-width: $mobile) {
+    max-height: 250px;
+  }
 }
 
 .col {
