@@ -1,4 +1,14 @@
 [
+  {
+		"slug": "onitama-clone",
+		"name": "Onitama Clone",
+		"summary":"Onimata is a Japanase stategy board game that inspired me to make a web based clone",
+		"my_role": "Built with Typescript, React, MUI, Figma",
+		"images" : [""], 
+    "image_src" : "onitama_preview.webp",
+    "git": "https://github.com/olaszm/onitama-clone", 
+		"url": "https://onitama-clone-om.netlify.app/"
+	},
 	{
 		"slug": "artful-fox",
 		"name": "Artful Fox Creatives",
