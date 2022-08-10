@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import ProjectSection from "@/components/ProjectSection";
+import ProjectSection from "@/components/ProjectSection.vue";
 export default {
   components: {
     ProjectSection,

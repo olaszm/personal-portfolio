@@ -8,11 +8,11 @@
               <img  src="@/assets/emblem_white.svg" alt="">
             </router-link>
           </div>
-          <span class="close-btn hoverable" @click="closeMenu">
+          <span class="close-btn hoverable" @click="toggleMenu">
             <img src="@/assets/x.svg" alt="X" />
           </span>
         </div>
-        <ul @click="closeMenu">
+        <ul @click="toggleMenu">
           <li class="menu-item hoverable">
             <router-link to="/">
               Home
@@ -61,19 +61,18 @@
 
 <script>
 import { gsap } from "gsap";
-import { EventBus } from "@/plugins/eventbus.js";
 export default {
   components: {},
+  props: {
+    isMenuOpen: Boolean,
+    toggleMenu: Function
+  },
   data() {
     return {
-      isMenuOpen: false,
       tween: "",
     };
   },
   methods: {
-    closeMenu() {
-      this.isMenuOpen = false;
-    },
   },
   watch: {
     isMenuOpen(newVal) {
@@ -90,9 +89,6 @@ export default {
     },
   },
   mounted() {
-    EventBus.$on("openMenu", (e) => {
-      this.isMenuOpen = e;
-    });
     // this.tween.play();
   },
 };

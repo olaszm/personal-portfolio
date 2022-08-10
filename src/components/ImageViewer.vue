@@ -20,7 +20,6 @@
 </template>
 
 <script>
-import { EventBus } from "@/plugins/eventbus.js";
 export default {
   props: ["images", "curr"],
   data() {
@@ -32,7 +31,7 @@ export default {
 
   methods: {
     closeImageViewer() {
-      EventBus.$emit("toggleImageViewer", false);
+      console.log('toggleImageViewer')
     },
     nextImage() {
       if (this.currentImageIndex >= this.$props.images.length - 1) {

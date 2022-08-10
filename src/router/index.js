@@ -1,14 +1,11 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
-
-Vue.use(VueRouter);
+import { createRouter, createWebHistory } from "vue-router";
+import MyHome from "../views/MyHome.vue";
 
 const routes = [
   {
     path: "/",
     name: "Home",
-    component: Home,
+    component: MyHome,
   },
   {
     path: "/about",
@@ -17,7 +14,7 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue"),
+      import(/* webpackChunkName: "about" */ "../views/MyAbout.vue"),
   },
   {
     path: "/work",
@@ -26,7 +23,7 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/Project.vue"),
+      import(/* webpackChunkName: "about" */ "../views/MyProject.vue"),
   },
   // {
   //   path: "/project/:name",
@@ -39,18 +36,18 @@ const routes = [
   // },
   {
     // path: "*",
-    path: "/:catchAll(.*)",
+    path: "/:pathMatch(.*)",
     name: "NotFound",
-    component: () => 
-    import(/* webpackChunkName: "notfound" */ '../views/PageNotFound.vue'),
+    component: () =>
+      import(/* webpackChunkName: "notfound" */ '../views/PageNotFound.vue'),
   },
 ];
 
-const router = new VueRouter({
-  mode: "history",
+const router = createRouter({
+  history: createWebHistory(),
   base: process.env.BASE_URL,
   scrollBehavior() {
-    return { x: 0, y: 0 };
+    return { left: 0, top: 0 };
   },
   routes,
 });

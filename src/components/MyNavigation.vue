@@ -8,20 +8,17 @@
       </div>
 
       <div class="menu">
-        <img class="hoverable" src="@/assets/hamburger.svg" @click="openMenu" alt />
+        <img class="hoverable" src="@/assets/hamburger.svg" @click="toggleMenu" alt />
       </div>
     </nav>
   </header>
 </template>
 
 <script>
-import { EventBus } from "@/plugins/eventbus.js";
 export default {
-  methods: {
-    openMenu() {
-      EventBus.$emit("openMenu", true);
-    },
-  },
+  props: {
+    toggleMenu: Function
+  }
 };
 </script>
 

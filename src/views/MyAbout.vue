@@ -3,28 +3,14 @@
     <div class="about__me">
       <p>
         Hi, My name is Martin and I am a front-end developer from
-        Hungary, based in London looking for freelance and full-time job
-        opportunities.
+        Hungary, based in London.
       </p>
       <p>
-        Love to create interesting, playful and interactive web applications. I
-        am a big fan of Vue.js thanks to the
-        <a
-          class="hoverable"
-          href="https://coding.garden/#/"
-          rel="noopener"
-          target="_blank"
-          >Coding Garden community</a
-        >. I'm passionate about anything related to technology and learning new
-        skills and tools. In my freetime I like to listen to
-        <a
-          class="hoverable"
-          href="https://lexfridman.com/podcast/"
-          target="_blank"
-          rel="noopener"
-          >Lex Fridman’s</a
-        >
-        podcast, watch other coding related things and rock climb!
+        My largest body of work has been building front-end applications with React.js with various CSS libraries.
+        I've also worked a fair amount with Django and Postgres in the backend while I was working as a full-stack developer.
+      </p>
+      <p>
+        Outside of work I enjoy 🧗‍♂️ rock climbing, live concerts and reading about software developement.
       </p>
       <p>
         If you want to work with me, drop me an email so we can discuss about

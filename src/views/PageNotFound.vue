@@ -2,11 +2,16 @@
   <div class="wrapper">
     <div class="inner">
       <div class="flex col">
-        <img class="img" src="../assets/404.png" alt="Page not found" />
+        <img class="img" 
+          src="../assets/404.png" 
+          alt="Page not found" 
+        />
 
         <div class="flex col">
           <h4>Oops! There is nothing here!</h4>
-          <router-link to="/" class="link hoverable">Take me back</router-link>
+          <router-link to="/" 
+            class="link hoverable">Take me back
+          </router-link>
         </div>
       </div>
     </div>

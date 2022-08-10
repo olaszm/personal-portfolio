@@ -1,19 +1,28 @@
-import Vue from "vue";
+import { createApp } from "vue";
 import App from "./App.vue";
-import VueMeta from "vue-meta";
 import router from "./router";
 import VueGtag from 'vue-gtag';
 
-Vue.config.productionTip = false;
 
 
-Vue.use(VueGtag, {
+
+const app = createApp(
+  App,
+  {}
+  )
+
+app.use(router)
+
+
+app.config.productionTip = false;
+
+app.use(VueGtag, {
   config: { id: process.env.VUE_APP_GA_ID }
-},router);
-Vue.use(VueMeta);
+}, router);
 
-Vue.directive("magnetic", {
-  bind: function(el) {
+
+app.directive("magnetic", {
+  created: function (el) {
     el.addEventListener("mousemove", (e) => {
       const { pageX, pageY } = e;
       const offsetTopParent = e.target.offsetParent.offsetTop;
@@ -38,7 +47,5 @@ Vue.directive("magnetic", {
   },
 });
 
-new Vue({
-  router,
-  render: (h) => h(App),
-}).$mount("#app");
+
+app.mount("#app");
