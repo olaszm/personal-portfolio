@@ -1,14 +1,4 @@
 [
-  {
-		"slug": "onitama-clone",
-		"name": "Onitama Clone",
-		"summary":"Onimata is a Japanase stategy board game that inspired me to make a web based clone",
-		"my_role": "Built with Typescript, React, MUI, Figma",
-		"images" : [""], 
-    "image_src" : "onitama_preview.webp",
-    "git": "https://github.com/olaszm/onitama-clone", 
-		"url": "https://onitama-clone-om.netlify.app/"
-	},
 	{
 		"slug": "artful-fox",
 		"name": "Artful Fox Creatives",
@@ -48,19 +38,15 @@
     "url": "https://davidlizom.com/"
   },
   {
-    "slug": "cassiopeia-plant-shop",
-    "name": "Cassiopeia Plant Shop",
-    "summary": "Cassiopeia is a small plant shop for home & office plants. I enjoy using mock-ups and UI kits so I can focus more on functionality. I've found this cool minimalistic Figma kit so I built it.",
-    "my_role": "I've done a couple of e-commerce websites from scratch before but never integrated any payment system, so for this project, I used Stripe's Stripe.js library. The library has many functions, but thankfully their documentations is easy to use and very straightforward, so it did not cause any problems to integrate the payment method(Of course ,it's just a test API, it doesn't charge you). On the front-end I used Vue with vuex and router, for CMS I used Contentful and I'm hosting on heroku.(sorry ☹)",
-    "images": [
-      "cassio_1",
-      "cassio_2",
-      "cassio_3"
-    ],
-    "image_src" : "cassio_preview.webp",
-    "git": "https://github.com/olaszm/cassiopeia_shop",
-    "url": "https://cassiopeia-shop.herokuapp.com/"
-  },
+		"slug": "onitama-clone",
+		"name": "Onitama Clone",
+		"summary":"Onimata is a Japanase stategy board game that inspired me to make a web based clone",
+		"my_role": "Built with Typescript, React, MUI, Figma",
+		"images" : [""], 
+    "image_src" : "onitama_preview.webp",
+    "git": "https://github.com/olaszm/onitama-clone", 
+		"url": "https://onitama-clone-om.netlify.app/"
+	},
   {
     "slug": "personal-portfolio",
     "name": "Personal Portfolio",

@@ -64,7 +64,6 @@
 
 <script>
 import ImageViewer from '@/components/ImageViewer'
-import { EventBus } from "@/plugins/eventbus.js";
 import { gsap, ScrollTrigger } from "gsap/all";
 gsap.registerPlugin(ScrollTrigger);
 
@@ -108,11 +107,6 @@ export default {
       let item = data.find((item) => item.slug === this.$route.params.name);
       this.project = item;
     });
-
-
-    EventBus.$on('toggleImageViewer', (payload)=>{
-      this.isImageViewerOpen =  payload
-    })
 
     // let tl = gsap.timeline({});
 

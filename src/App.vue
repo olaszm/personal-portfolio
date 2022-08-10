@@ -1,20 +1,23 @@
 <template>
   <div id="app" :class="!isMobile ? 'no-cursor' : ''">
-    <Navigation />
-    <transition name="smooth" mode="out-in">
-      <router-view class="main" :key="$route.fullPath" />
-    </transition>
-    <Footer />
+    <MyNavigation :toggleMenu=toggleMenu />
+        <router-view v-slot="{ Component }" class="main" :key="$route.fullPath" >
+          <transition name="smooth" mode="out-in">
+            <component :is="Component"> </component> 
+          </transition>
+        </router-view>
+    <CustomFooter />
     <CursorEl :isMobile="isMobile" />
-    <DropDownMenu />
+    <DropDownMenu :isMenuOpen=isDropDownOpen :toggleMenu=toggleMenu />
   </div>
 </template>
 
 <script>
-import Navigation from "@/components/Navigation.vue";
-import Footer from "@/components/Footer.vue";
+import MyNavigation from "@/components/MyNavigation.vue";
+import CustomFooter from "@/components/CustomFooter.vue";
 import CursorEl from "@/components/CursorEl.vue";
 import DropDownMenu from "@/components/DropDownMenu.vue";
+
 export default {
   metaInfo: {
     title: `Martin Olasz Front End Developer`,
@@ -36,15 +39,20 @@ export default {
   data() {
     return {
       isMobile: false,
+      isDropDownOpen: false,
     };
   },
   components: {
-    Navigation,
+    MyNavigation,
     CursorEl,
     DropDownMenu,
-    Footer,
+    CustomFooter,
   },
-  methods: {},
+  methods: {
+    toggleMenu() {
+      this.isDropDownOpen = !this.isDropDownOpen
+    }
+  },
   created() {
 
     var userAgent = navigator.userAgent.toLowerCase(),
