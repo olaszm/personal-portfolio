@@ -6,6 +6,7 @@
   "description": "This is my personal portfolio",
   "license": "MIT",
   "module": "es6",
+  "module": "es6",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
