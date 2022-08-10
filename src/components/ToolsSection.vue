@@ -1,24 +1,22 @@
 <template>
   <div class="wrapper">
     <div class="tools__container">
-      <h3 ref='section_title'>Some of my favourite tools to work with</h3>
+      <h3 ref="section_title">Some of my favourite tools to work with</h3>
       <div class="tools__row" ref="first_row">
         <div class="tool" v-for="(item, index) in rowItems" :key="index">
-          <img
-            v-magnetic
-            :src="require(`@/assets${item.src}`)"
-            :alt="item.name"
-          />
+          <h2>
+            <font-awesome-icon :icon="item.icon" />
+          </h2>
           <p>{{ item.name }}</p>
         </div>
       </div>
       <div class="tools__row" ref="second_row">
         <div class="tool" v-for="(item, index) in rowItemsTwo" :key="index">
-          <img
-            v-magnetic
-            :src="require(`@/assets${item.src}`)"
-            :alt="item.name"
-          />
+          <div>
+            <h2> 
+              <font-awesome-icon :icon="item.icon" />
+            </h2>
+          </div >
           <p>{{ item.name }}</p>
         </div>
       </div>
@@ -28,21 +26,24 @@
 
 <script>
 import { gsap, ScrollTrigger } from "gsap/all";
-
 gsap.registerPlugin(ScrollTrigger);
 
 export default {
   data() {
     return {
       tools: [
-        { name: "HTML 5", src: "/html5.svg" },
-        { name: "CSS 3", src: "/css3.svg" },
-        { name: "JavaScript", src: "/javascript.svg" },
-        { name: "Vue.js", src: "/vue.svg" },
-        { name: "Figma", src: "/figma.svg" },
-        { name: "Node.js", src: "/nodejs.svg" },
-        { name: "Firebase", src: "/firebase.svg" },
-        { name: "NPM", src: "/npm.svg" },
+        { name: "HTML 5", icon: "fa-brands fa-html5" },
+        { name: "CSS 3", icon: "fa-brands fa-css3" },
+        {
+          name: "JavaScript",
+         
+          icon: "fa-brands fa-js",
+        },
+        { name: "React.js", icon: "fa-brands fa-react" },
+        { name: "Figma", icon: "fa-brands fa-figma" },
+        { name: "Node.js", icon: "fa-brands fa-node-js" },
+        { name: "Python", icon: "fa-brands fa-python" },
+        { name: "Github", icon: "fa-brands fa-github" },
       ],
     };
   },
@@ -58,14 +59,14 @@ export default {
   },
   mounted() {
     const { first_row, second_row, section_title } = this.$refs;
-    
+
     gsap.from(section_title, {
-      x: '-50%',
+      x: "-50%",
       opacity: 0,
       delay: 0.5,
-      duration:0.65,
-      ease: 'power3.out'
-    })
+      duration: 0.65,
+      ease: "power3.out",
+    });
 
     gsap.from([first_row, second_row], {
       y: "100%",
