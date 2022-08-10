@@ -3,6 +3,10 @@ import App from "./App.vue";
 import router from "./router";
 import VueGtag from 'vue-gtag';
 
+/* import the fontawesome core */
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faCss3, faFigma, faNodeJs, faPython, faReact, faHtml5, faJs, faGithub } from '@fortawesome/free-brands-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 
 
@@ -20,15 +24,18 @@ app.use(VueGtag, {
   config: { id: process.env.VUE_APP_GA_ID }
 }, router);
 
+library.add(faCss3, faFigma, faNodeJs, faPython, faReact, faHtml5, faJs,  faGithub)
+app.component('font-awesome-icon', FontAwesomeIcon)
 
 app.directive("magnetic", {
-  created: function (el) {
+  mounted: function (el) {
     el.addEventListener("mousemove", (e) => {
       const { pageX, pageY } = e;
-      const offsetTopParent = e.target.offsetParent.offsetTop;
-      const offsetLeftParent = e.target.offsetParent.offsetLeft;
 
-      const { offsetTop, offsetLeft, clientWidth, clientHeight } = e.target;
+      const { offsetTop, offsetLeft, clientWidth, clientHeight, offsetParent  } = e.target;
+      if(!offsetParent) return
+      const {offsetLeft: offsetLeftParent, offsetTop: offsetTopParent} = offsetParent
+
       let x = pageX - offsetLeft - offsetLeftParent;
       let y = pageY - offsetTop - offsetTopParent;
       let newX = mapping(x, clientWidth / 2, 0, 0, 10);
