@@ -3,29 +3,23 @@
     <div class="overlay__menu wrappe" v-show="isMenuOpen">
       <div class="overlay__menu__inner wrapper">
         <div class="overlay__menu__header">
-          <div  class="logo">
-            <router-link to="/" >
-              <img  src="@/assets/emblem_white.svg" alt="">
+          <div class="logo">
+            <router-link to="/">
+              <img src="@/assets/emblem_white.svg" alt="" />
             </router-link>
           </div>
           <span class="close-btn hoverable" @click="toggleMenu">
             <img src="@/assets/x.svg" alt="X" />
           </span>
         </div>
-        <ul @click="toggleMenu">
-          <li class="menu-item hoverable">
-            <router-link to="/">
-              Home
-            </router-link>
-          </li>
-          <li class="menu-item hoverable">
-            <router-link to="/about">
-              About
-            </router-link>
-          </li>
-          <li class="menu-item hoverable">
-            <router-link to="/work">
-              Work
+        <ul @click="toggleMenu" class="menu-link-container">
+          <li
+            v-for="(item, index) in menuItems"
+            :key="index"
+            class="menu-item hoverable"
+          >
+            <router-link :to="item.url">
+              {{ item.name }}
             </router-link>
           </li>
         </ul>
@@ -59,39 +53,37 @@
   </transition>
 </template>
 
-<script>
+<script setup>
+const props = defineProps(["isMenuOpen", "toggleMenu"]);
+import { ref, watch } from "vue";
 import { gsap } from "gsap";
-export default {
-  components: {},
-  props: {
-    isMenuOpen: Boolean,
-    toggleMenu: Function
-  },
-  data() {
-    return {
-      tween: "",
-    };
-  },
-  methods: {
-  },
-  watch: {
-    isMenuOpen(newVal) {
-      if (newVal) {
-        gsap.from(".menu-item", {
-          width: 0,
-          opacity: 0,
-          duration: 0.4,
-          delay: 0.5,
-          // ease: "power3.out",
-          stagger: 0.1,
-        });
-      }
-    },
-  },
-  mounted() {
-    // this.tween.play();
-  },
-};
+
+const menuItems = ref([
+  { name: "Home", url: "/" },
+  { name: "About", url: "/about" },
+  { name: "Work", url: "/work" },
+]);
+
+watch(
+  () => props.isMenuOpen,
+  (newVal, oldVal) => {
+
+	if (newVal) {
+      const elementsToAnimate = [
+        ...document.querySelector(".menu-link-container")?.children,
+      ];
+	  if(!elementsToAnimate || !elementsToAnimate.length) return 
+
+      gsap.from(elementsToAnimate, {
+        width: 0,
+        duration: 0.4,
+        delay: 0.5,
+        ease: "power3.out",
+        stagger: 0.1,
+      });
+    }
+  }
+);
 </script>
 
 <style lang="scss">
@@ -181,10 +173,10 @@ export default {
   margin-top: 1rem;
   .logo {
     a {
-        &::after {
-          display: none;
-        }
+      &::after {
+        display: none;
       }
+    }
     img {
       height: 45px;
       width: auto;
