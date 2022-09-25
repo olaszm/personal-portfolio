@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap");
+
+
+:root {
+    --primary: #4A5859;
+    --secondary: #627173;
+    --background-color: #F3F3F3;
+    --font-color: #1B2626;
+    --font-color-secondary: #1B2626;
+    --white: #F3F3F3;
+    --black: #121a1a;
+    
+    --ascend: #D16E01;
+    --grey: #D9D9D9;
+    --invalid: #fa755a;
+    --background-color-secondary: var(--grey);
+}
+
+[data-theme="dark"] {
+    --primary: #4A5859;
+    --secondary: #627173;
+    --background-color: #1B2626;
+    --font-color: #F3F3F3;
+    --font-color-secondary: #F3F3F3;
+    --white: #F3F3F3;
+    --black: #121a1a;
+    
+    --ascend: #E6851A;
+    --grey: #D9D9D9;
+    --invalid: #fa755a;
+    --background-color-secondary: var(--secondary);
+}
