@@ -10,31 +10,19 @@
 					<font-awesome-icon class="clickable-icon" size="lg" :icon="themeSwitcherIcon" />
 				</ClientOnly>
 			</Button>
-			<Button class="btn-icon menu-overlay-parent" @click.capture="toggleModal">
+			<Button class="btn-icon menu-overlay-parent" @click.capture="openMenu">
 				<ClientOnly placeholder="Menu">
 					<font-awesome-icon class="clickable-icon" size="lg"
 						:icon="!isOpen ? 'fa-solid fa-bars' : 'fa-solid fa-circle-xmark'" />
 				</ClientOnly>
 			</Button>
-			<!-- <Card v-if="isDropDownMenuOpen" variant='var(--secondary)' class='menu-dropdown'>
+			<Card v-if="isDropDownMenuOpen" :variant='cardBg' class='menu-dropdown'>
 				<div class='menu-dropdown-inner'>
-					<div class='dropdown-item'>
-						yo
-					</div>
-					<div class='dropdown-item'>
-						yo
-					</div>
-					<div class='dropdown-item'>
-						yo
-					</div>
-					<div class='dropdown-item'>
-						yo
-					</div>
-					<div class='dropdown-item'>
-						yo
-					</div>
+					<NuxtLink class='dropdown-item' :to="item.route" v-for="item in routes">
+						{{ item.name.replace(item.name[0], item.name[0].toUpperCase()) }}
+					</NuxtLink>
 				</div>
-			</Card> -->
+			</Card>
 		</div>
 	</nav>
 </template>
@@ -42,30 +30,45 @@
 <script lang="ts" setup>
 import IconComponent from "@/assets/logo.svg?component";
 import { computed, inject, Ref } from "vue";
+const { currentTheme, togglePreference } = inject<{ currentTheme: Ref, togglePreference: () => void }>('theme')
 const { toggleModal, isOpen } = defineProps<Props>()
+
+const router = useRouter()
+const routes = [
+	{ name: 'home', route: '/' },
+	{ name: 'about', route: '/about' },
+	// { name: 'work', route: '/work' },
+	{ name: 'projects', route: '/projects' },
+]
 
 interface Props {
 	toggleModal: () => void
 	isOpen: boolean
 }
+const isDropDownMenuOpen = ref(false)
 
-const isDropDownMenuOpen = ref(true)
+const cardBg = computed(() => {
+	return currentTheme.value === "dark" ? "var(--secondary)" : "var(--grey)"
+})
+
 
 const themeSwitcherIcon = computed(() =>
 	currentTheme.value === "dark" ? "fa-solid fa-sun" : "fa-solid fa-moon"
 )
 
 const openMenu = () => {
-	if (true) {
-
-		isDropDownMenuOpen.value = !isDropDownMenuOpen.value
-		return
-	}
-
-	toggleModal()
+	isDropDownMenuOpen.value = !isDropDownMenuOpen.value
 }
 
-const { currentTheme, togglePreference } = inject<{ currentTheme: Ref, togglePreference: () => void }>('theme')
+const closeMenu = () => {
+	if (isDropDownMenuOpen.value) {
+		isDropDownMenuOpen.value = false
+	}
+}
+
+watch(() => router.currentRoute.value.path, (oldv, nextv) => {
+	closeMenu()
+})
 
 </script>
 
@@ -119,7 +122,7 @@ const { currentTheme, togglePreference } = inject<{ currentTheme: Ref, togglePre
 	right: 0;
 	width: 300px;
 	height: auto;
-	padding: 1rem;
+	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.45);
 }
 
 .menu-dropdown-inner {
@@ -133,11 +136,26 @@ const { currentTheme, togglePreference } = inject<{ currentTheme: Ref, togglePre
 .dropdown-item {
 	width: 100%;
 	border-radius: 8px;
-	padding: 0.25rem;
+	padding: .55rem .35rem;
 	cursor: pointer;
+	list-style: none;
 }
 
 .dropdown-item:hover {
 	background-color: var(--ascend);
+	color: var(--font-color);
+}
+
+
+@media all and (max-device-width: 640px) {
+	.menu-dropdown {
+		width: 100%;
+	}
+}
+
+@media all and (max-device-width: 320px) {
+	.menu-dropdown {
+		width: 100%;
+	}
 }
 </style>
