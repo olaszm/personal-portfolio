@@ -10,13 +10,13 @@
 					<font-awesome-icon class="clickable-icon" size="lg" :icon="themeSwitcherIcon" />
 				</ClientOnly>
 			</Button>
-			<Button class="btn-icon menu-overlay-parent" @click.capture="openMenu">
+			<Button class="btn-icon menu-overlay-parent" @click.capture="toggleModal">
 				<ClientOnly placeholder="Menu">
 					<font-awesome-icon class="clickable-icon" size="lg"
 						:icon="!isOpen ? 'fa-solid fa-bars' : 'fa-solid fa-circle-xmark'" />
 				</ClientOnly>
 			</Button>
-			<Card v-if="isDropDownMenuOpen" variant='var(--secondary)' class='menu-dropdown'>
+			<!-- <Card v-if="isDropDownMenuOpen" variant='var(--secondary)' class='menu-dropdown'>
 				<div class='menu-dropdown-inner'>
 					<div class='dropdown-item'>
 						yo
@@ -34,7 +34,7 @@
 						yo
 					</div>
 				</div>
-			</Card>
+			</Card> -->
 		</div>
 	</nav>
 </template>
