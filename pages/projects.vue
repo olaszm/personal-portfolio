@@ -22,6 +22,11 @@
 
 
 <script setup lang="ts">
+
+useHead({
+	title: 'About'
+})
+
 const { data } = await useFetch('/api/projects')
 
 

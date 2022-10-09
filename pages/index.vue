@@ -46,6 +46,10 @@ import { reactive, computed } from "vue";
 const { data } = await useFetch('/api/projects')
 const { data: workData } = await useFetch('/api/works')
 
+useHead({
+	title: 'Home',
+})
+
 const tools = reactive([
 	{ name: "HTML 5", icon: "fa-brands fa-html5" },
 	{ name: "CSS 3", icon: "fa-brands fa-css3" },

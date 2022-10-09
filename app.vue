@@ -2,11 +2,7 @@
 	<div id="app">
 		<menu-overlay v-if="isOpen" :toggleModal='() => { toggleModal() }' :isOpen="isOpen" />
 		<div class="container">
-			<navigation 
-				:toggleModal='() => { toggleModal() }'
-				:isOpen="isOpen"
-				:togglePreference="togglePreference"
-				/>
+			<navigation :toggleModal='() => { toggleModal() }' :isOpen="isOpen" :togglePreference="togglePreference" />
 			<NuxtLoadingIndicator color="#fca523" />
 			<NuxtLayout :name="layout">
 				<NuxtPage class="main" />
@@ -22,12 +18,24 @@ import { ref, provide, readonly } from "vue";
 import { useTheme } from "@/composables/useTheme";
 import { useToggleModal } from '@/composables/useToggleModal';
 
+useHead({ 
+	titleTemplate: (titleChunk) => { return titleChunk ? `${titleChunk} - Martin Olasz` : 'Martin Olasz'; },
+	meta: [
+		{ name: 'description', content: `Junior front-end developer building modern web applications with cutting edge technologies.` },
+		{
+        name: "keywords",
+        content:
+          "developer, freelance, front-end, website, vue, react,javascript, html, css, london,",
+		},
+	],
+ })
+
 const { togglePreference, currentTheme } = useTheme();
 const { toggleModal, isOpen } = useToggleModal()
 
 const layout = ref("default");
 
-provide('theme', {currentTheme, togglePreference})
+provide('theme', { currentTheme, togglePreference })
 </script>
 
 

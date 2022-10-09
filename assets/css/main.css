@@ -66,21 +66,27 @@ a.router-link-active, a.router-link-exact-active {
 
 
 
-
-@media all and (max-device-width: 720px){
+@media screen and (max-width: 1440px){
     .container {
-		width: 85%
+		width: 55%;
 	}
 }
 
-@media all and (max-device-width: 640px){
+
+@media screen and (max-width: 720px){
     .container {
-		width: 95%
+		width: 75%;
 	}
 }
 
-@media all and (max-device-width: 320px){
+@media screen and (max-width: 640px){
     .container {
-		width: 95%
+		width: 90%;
+	}
+}
+
+@media screen and (max-width: 375px){
+    .container {
+		width: 95%;
 	}
 }
