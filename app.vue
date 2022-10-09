@@ -20,6 +20,7 @@ import { useToggleModal } from '@/composables/useToggleModal';
 
 useHead({ 
 	titleTemplate: (titleChunk) => { return titleChunk ? `${titleChunk} - Martin Olasz` : 'Martin Olasz'; },
+	link: [{ rel: 'icon', type: 'image/png', href: '/favicon.png' }],
 	meta: [
 		{ name: 'description', content: `Junior front-end developer building modern web applications with cutting edge technologies.` },
 		{
@@ -27,7 +28,7 @@ useHead({
         content:
           "developer, freelance, front-end, website, vue, react,javascript, html, css, london,",
 		},
-	],
+	]
  })
 
 const { togglePreference, currentTheme } = useTheme();

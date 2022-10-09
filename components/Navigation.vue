@@ -16,13 +16,10 @@
 						:icon="!isOpen ? 'fa-solid fa-bars' : 'fa-solid fa-circle-xmark'" />
 				</ClientOnly>
 			</Button>
-			<Card v-if="isDropDownMenuOpen" :variant='cardBg' class='menu-dropdown'>
-				<div class='menu-dropdown-inner'>
-					<NuxtLink class='dropdown-item' :to="item.route" v-for="item in routes">
-						{{ item.name.replace(item.name[0], item.name[0].toUpperCase()) }}
-					</NuxtLink>
-				</div>
-			</Card>
+			<Dropdown :isOpen=isDropDownMenuOpen :variant="cardBg">
+				<DropDownItem v-for="item in routes" :text="item.name" :state="item?.state" :route="item.route" :icon="item.icon">
+				</DropDownItem>
+			</Dropdown>
 		</div>
 	</nav>
 </template>
@@ -33,12 +30,16 @@ import { computed, inject, Ref } from "vue";
 const { currentTheme, togglePreference } = inject<{ currentTheme: Ref, togglePreference: () => void }>('theme')
 const { toggleModal, isOpen } = defineProps<Props>()
 
+interface IRoute {
+	name: string, route:string, state?: string, icon?: string
+}
+
 const router = useRouter()
-const routes = [
-	{ name: 'home', route: '/' },
-	{ name: 'about', route: '/about' },
+const routes: IRoute[] = [
+	{ name: 'home', route: '/', icon: 'fa-solid fa-house'},
+	{ name: 'about', route: '/about', icon: 'fa-solid fa-address-card'},
 	// { name: 'work', route: '/work' },
-	{ name: 'projects', route: '/projects' },
+	{ name: 'projects', route: '/projects', icon: 'fa-solid fa-laptop-code' },
 ]
 
 interface Props {
@@ -114,48 +115,5 @@ watch(() => router.currentRoute.value.path, (oldv, nextv) => {
 
 .menu-overlay-parent {
 	position: relative;
-}
-
-.menu-dropdown {
-	position: absolute;
-	top: calc(45px + 10px);
-	right: 0;
-	width: 300px;
-	height: auto;
-	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.45);
-}
-
-.menu-dropdown-inner {
-	height: 100%;
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-}
-
-.dropdown-item {
-	width: 100%;
-	border-radius: 8px;
-	padding: .55rem .35rem;
-	cursor: pointer;
-	list-style: none;
-}
-
-.dropdown-item:hover {
-	background-color: var(--ascend);
-	color: var(--font-color);
-}
-
-
-@media all and (max-device-width: 640px) {
-	.menu-dropdown {
-		width: 100%;
-	}
-}
-
-@media all and (max-device-width: 320px) {
-	.menu-dropdown {
-		width: 100%;
-	}
 }
 </style>

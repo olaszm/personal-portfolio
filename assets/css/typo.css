@@ -1,0 +1,31 @@
+.header {
+    font-weight: 700;
+    font-size: 2rem;
+    line-height: 2.8;
+}
+
+
+.text {
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 1.6;
+}
+
+
+.text-bold {
+    font-weight: 700;
+    font-size: 1.4rem;
+    line-height: 1.6;
+}
+
+.text-small {
+    font-weight: 400;
+    font-size: 1.2rem;
+    line-height: 2.4;
+}
+
+.text-small-bold {
+    font-weight: 700;
+    font-size: 1.2rem;
+    line-height: 2.4;
+}
