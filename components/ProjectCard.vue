@@ -1,5 +1,5 @@
 <template>
-	<Card :variant='cardBg'>
+	<Card :variant='bgColor'>
 		<div class="project_container">
 			<div class="image_container">
 				<img class="image" :src="coverImgPath" alt="Random photo">
@@ -32,10 +32,7 @@ interface Props {
 
 const { title, cover_img } = defineProps<Props>()
 
-
-const cardBg = computed(() => {
-	return currentTheme.value === "dark" ? "var(--secondary)" : "var(--grey)"
-})
+const bgColor = computed(() => currentTheme.value === 'dark' ? 'var(--secondary)' : 'var(--grey)')
 
 
 const coverImgPath = computed(() => {

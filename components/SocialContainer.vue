@@ -19,20 +19,11 @@
 
 
 <script lang="ts" setup>
-import { reactive } from "vue";
+import {IRoute} from '../types/main';
+import {inject} from 'vue'
 
-const socials = reactive([
-	{
-		name: "LinkedIn",
-		url: "https://www.linkedin.com/in/martin-o-a038671b5/",
-		icon: "fa-brands fa-linkedin",
-	},
-	{
-		name: "GitHub",
-		url: "https://github.com/olaszm",
-		icon: "fa-brands fa-github",
-	},
-]);
+const routes = inject<IRoute[]>('nav-routes')
+const socials = computed(() => routes.filter((r) => r.type === 'social' ))
 </script>
 
 

@@ -17,6 +17,7 @@
 import { ref, provide, readonly } from "vue";
 import { useTheme } from "@/composables/useTheme";
 import { useToggleModal } from '@/composables/useToggleModal';
+import { IRoute } from './types/main';
 
 useHead({ 
 	titleTemplate: (titleChunk) => { return titleChunk ? `${titleChunk} - Martin Olasz` : 'Martin Olasz'; },
@@ -35,8 +36,27 @@ const { togglePreference, currentTheme } = useTheme();
 const { toggleModal, isOpen } = useToggleModal()
 
 const layout = ref("default");
+const routes: IRoute[] = reactive([
+	{ name: 'Home', url: '/', icon: 'fa-solid fa-house', type: 'general' },
+	{ name: 'About', url: '/about', icon: 'fa-solid fa-address-card', type: 'general' },
+	{ name: 'Projects', url: '/projects', icon: 'fa-solid fa-laptop-code', type: 'general' },
+	{
+		name: "LinkedIn",
+		url: "https://www.linkedin.com/in/martin-o-a038671b5/",
+		icon: "fa-brands fa-linkedin",
+		type: 'social'
+	},
+	{
+		name: "GitHub",
+		url: "https://github.com/olaszm",
+		icon: "fa-brands fa-github",
+		type: 'social'
+	},
+])
 
 provide('theme', { currentTheme, togglePreference })
+provide('nav-routes', routes)
+
 </script>
 
 

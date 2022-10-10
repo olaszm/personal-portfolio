@@ -26,13 +26,18 @@ const itemState = computed(() => {
     return {
         hover: state === 'hover',
         disabled: state === 'disabled',
-        focus: state === 'focus'
+        focus: state === 'focus',
+        active: router.currentRoute.value.path === route
     }
 })
 
-
 const navigateTo = (route: string) => {
-    router.push(route)
+    if(route.startsWith('/')) {
+        router.push(route)
+        return
+    }
+
+    window.open(route, '_blank', 'noreferrer')
 }
 
 </script>
@@ -53,6 +58,10 @@ const navigateTo = (route: string) => {
     background-color: var(--ascend);
 }
 
+.dropdown-item:active, .active {
+    background-color: var(--ascend)
+}
+
 .dropdown-item:disabled,
 .disabled {
     background-color: var(--white);
@@ -66,5 +75,11 @@ const navigateTo = (route: string) => {
 
 .dropdown-item:last-of-type {
     border-radius: 0 0 8px 8px;
+}
+
+@media screen and (max-width: 640px){
+    .sub-title {
+        font-size: 1rem;
+    }
 }
 </style>

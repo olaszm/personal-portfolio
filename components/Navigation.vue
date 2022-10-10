@@ -16,10 +16,17 @@
 						:icon="!isOpen ? 'fa-solid fa-bars' : 'fa-solid fa-circle-xmark'" />
 				</ClientOnly>
 			</Button>
-			<Dropdown :isOpen=isDropDownMenuOpen :variant="cardBg">
-				<DropDownItem v-for="item in routes" :text="item.name" :state="item?.state" :route="item.route" :icon="item.icon">
-				</DropDownItem>
-			</Dropdown>
+			<Transition>
+				<Dropdown class="navigation-list" :isOpen=isDropDownMenuOpen :variant="cardBg">
+					<DropDownItem v-for="item in generalRoutes" :text="item.name" :state="item?.state" :route="item.url"
+						:icon="item.icon">
+					</DropDownItem>
+
+					<DropdownSeparator />
+
+					<DropDownItem v-for="item in socialRoutes" :text="item.name" :route="item.url" :icon="item.icon"/>
+				</Dropdown>
+			</Transition>
 		</div>
 	</nav>
 </template>
@@ -27,30 +34,27 @@
 <script lang="ts" setup>
 import IconComponent from "@/assets/logo.svg?component";
 import { computed, inject, Ref } from "vue";
+import { IRoute } from '../types/main';
 const { currentTheme, togglePreference } = inject<{ currentTheme: Ref, togglePreference: () => void }>('theme')
+const routes  = inject<IRoute[]>('nav-routes')
 const { toggleModal, isOpen } = defineProps<Props>()
-
-interface IRoute {
-	name: string, route:string, state?: string, icon?: string
-}
-
-const router = useRouter()
-const routes: IRoute[] = [
-	{ name: 'home', route: '/', icon: 'fa-solid fa-house'},
-	{ name: 'about', route: '/about', icon: 'fa-solid fa-address-card'},
-	// { name: 'work', route: '/work' },
-	{ name: 'projects', route: '/projects', icon: 'fa-solid fa-laptop-code' },
-]
 
 interface Props {
 	toggleModal: () => void
 	isOpen: boolean
 }
+
+const router = useRouter()
+
 const isDropDownMenuOpen = ref(false)
 
 const cardBg = computed(() => {
 	return currentTheme.value === "dark" ? "var(--secondary)" : "var(--grey)"
 })
+
+
+const socialRoutes = computed(() => routes.filter(r => r.type === 'social'))
+const generalRoutes = computed(() => routes.filter(r => r.type === 'general'))
 
 
 const themeSwitcherIcon = computed(() =>
@@ -115,5 +119,21 @@ watch(() => router.currentRoute.value.path, (oldv, nextv) => {
 
 .menu-overlay-parent {
 	position: relative;
+}
+
+.navigation-list {
+	transform-origin: top right;
+}
+
+/* we will explain what these classes do next! */
+.v-enter-active,
+.v-leave-active {
+  transition: all 0.330s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+  transform: scale(0);
 }
 </style>
