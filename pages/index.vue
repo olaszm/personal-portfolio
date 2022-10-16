@@ -71,7 +71,7 @@ const tools = reactive([
 	display: flex;
 	flex-direction: column;
 	width: 100%;
-	gap: 3rem;
+	gap: 2rem;
 }
 
 .container:first-child {
