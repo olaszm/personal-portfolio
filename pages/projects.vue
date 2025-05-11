@@ -4,7 +4,7 @@
             Check out some of the projects I've been working on lately on the side!
         </div>
 
-        <ProjectCard v-for="project in data.projects" :title="project.title" :cover_img="project.cover_img">
+        <ProjectCard v-for="project in projects" :title="project.title" :cover_img="project.cover_img">
             <template v-slot:content>
                 {{ project.description }}
             </template>
@@ -24,11 +24,11 @@
 <script setup lang="ts">
 
 useHead({
-	title: 'About'
+    title: 'About'
 })
 
-const { data } = await useFetch('/api/projects')
-
+const { data } = await useFetch<ProjectsApiResponse>('/api/projects')
+const projects = computed(() => data?.value?.data || [])
 
 </script>
 

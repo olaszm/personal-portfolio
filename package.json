@@ -1,24 +1,24 @@
 {
-  "private": true,
-  "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
-    "generate": "nuxt generate",
-    "preview": "nuxt preview"
-  },
-  "devDependencies": {
-    "@nuxtjs/supabase": "^0.1.25",
-    "nuxt": "3.0.0-rc.8",
-    "typescript": "^4.7.4",
-    "vite-svg-loader": "^3.4.0",
-    "vue-tsc": "^0.40.1"
-  },
-  "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.1.2",
-    "@fortawesome/free-brands-svg-icons": "^6.1.2",
-    "@fortawesome/free-solid-svg-icons": "^6.1.2",
-    "@fortawesome/vue-fontawesome": "^3.0.1",
-    "sass": "^1.54.5",
-    "sass-loader": "^13.0.2"
-  }
+    "private": true,
+    "scripts": {
+        "build": "nuxt build",
+        "dev": "nuxt dev",
+        "generate": "nuxt generate",
+        "preview": "nuxt preview"
+    },
+    "devDependencies": {
+        "@nuxtjs/supabase": "^1.5.0",
+        "typescript": "^5.8.3",
+        "vite-svg-loader": "^5.1.0",
+        "vue-tsc": "^2.2.10"
+    },
+    "dependencies": {
+        "@fortawesome/fontawesome-svg-core": "^6.1.2",
+        "@fortawesome/free-brands-svg-icons": "^6.1.2",
+        "@fortawesome/free-solid-svg-icons": "^6.1.2",
+        "@fortawesome/vue-fontawesome": "^3.0.1",
+        "nuxt": "^3.17.2",
+        "sass": "^1.54.5",
+        "sass-loader": "^16.0.5"
+    }
 }
