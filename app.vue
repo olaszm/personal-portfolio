@@ -16,6 +16,7 @@
 <script lang="ts" setup>
 import { provide } from "vue";
 import { useTheme } from "@/composables/useTheme";
+import { useLang } from "@/composables/useLang";
 import { useToggleModal } from '@/composables/useToggleModal';
 import { type IRoute } from '~/utils/types';
 
@@ -34,6 +35,7 @@ useHead({
 
 const { togglePreference, currentTheme } = useTheme();
 const { toggleModal, isOpen } = useToggleModal()
+const { currentLang, setLang } = useLang()
 
 const routes: IRoute[] = reactive([
     { name: 'Home', url: '/', icon: 'fa-solid fa-house', type: 'general' },
@@ -54,6 +56,7 @@ const routes: IRoute[] = reactive([
 ])
 
 provide('theme', { currentTheme, togglePreference })
+provide('lang', { currentLang, setLang })
 provide('nav-routes', routes)
 
 </script>

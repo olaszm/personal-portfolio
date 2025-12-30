@@ -52,11 +52,7 @@ const tools = reactive([
     { name: "Node.js", icon: "devicon-nodejs-plain" },
     { name: "Sqlite", icon: "devicon-sqlite-plain" },
 ]);
-
-
-
 </script>
-
 
 <style scoped>
 .container {
@@ -74,7 +70,6 @@ const tools = reactive([
     font-size: 1.5rem;
     font-weight: 400;
 }
-
 
 .intro_title_link {
     font-weight: 600;

@@ -5,6 +5,10 @@
         </NuxtLink>
 
         <div class="button-container">
+            <select @input="handleSelectInput" name="" id="">
+                <option value="en">English</option>
+                <option value="hu">Hungarian</option>
+            </select>
             <Button v-if="!isOpen" class="btn-icon" @click.capture="togglePreference">
                 <ClientOnly placeholder='themeSwitcher'>
                     <font-awesome-icon class="clickable-icon" size="lg" :icon="themeSwitcherIcon" />
@@ -34,17 +38,22 @@
 <script lang="ts" setup>
 import IconComponent from "@/assets/logo.svg?component";
 import { computed, inject } from "vue";
-import { type IRoute } from '~/utils/types';
+import { type IRoute, type langOption } from '~/utils/types';
 const { currentTheme, togglePreference } = inject<ThemeContext>('theme') || {
     currentTheme: ref('light'),
     togglePreference: () => console.warn('Theme provider not found')
 }
+const { setLang } = inject<LangContext>('lang')!
 const routes = inject<IRoute[]>('nav-routes')
 const { isOpen } = defineProps<Props>()
 
 type ThemeContext = {
     currentTheme: Ref<string>;
     togglePreference: () => void;
+}
+
+type LangContext = {
+    setLang: (lang: langOption) => void;
 }
 
 interface Props {
@@ -77,6 +86,12 @@ const closeMenu = () => {
     if (isDropDownMenuOpen.value) {
         isDropDownMenuOpen.value = false
     }
+}
+
+const handleSelectInput = (e: Event) => {
+    const target = e.target as HTMLSelectElement;
+    const v = target.value as langOption
+    setLang(v)
 }
 
 watch(() => router.currentRoute.value.path, () => {
