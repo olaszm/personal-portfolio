@@ -5,6 +5,15 @@ import svgLoader from "vite-svg-loader";
 export default defineNuxtConfig({
     compatibilityDate: "2025-05-11",
     modules: ['@nuxtjs/supabase'],
+    app: {
+        head: {
+            link: [
+                {
+                    rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css'
+                }
+            ]
+        }
+    },
     vite: {
         plugins: [svgLoader()],
     },

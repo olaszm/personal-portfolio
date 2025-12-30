@@ -23,7 +23,7 @@ useHead({
     titleTemplate: (titleChunk) => { return titleChunk ? `${titleChunk} - Martin Olasz` : 'Martin Olasz'; },
     link: [{ rel: 'icon', type: 'image/png', href: '/favicon.png' }],
     meta: [
-        { name: 'description', content: `Junior front-end developer building modern web applications with cutting edge technologies.` },
+        { name: 'description', content: `Front-end developer building modern web applications with cutting edge technologies.` },
         {
             name: "keywords",
             content:

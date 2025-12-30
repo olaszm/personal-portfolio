@@ -14,6 +14,6 @@ library.add(faLaptopCode, faAddressCard, faHome, faChevronDown, faChevronRight, 
 
 
 export default defineNuxtPlugin(nuxtApp => {
-  // Doing something with nuxtApp
-  nuxtApp.vueApp.component('font-awesome-icon', FontAwesomeIcon, {})
+    // Doing something with nuxtApp
+    nuxtApp.vueApp.component('font-awesome-icon', FontAwesomeIcon, {})
 })

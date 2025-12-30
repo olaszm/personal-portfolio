@@ -7,6 +7,7 @@ export default eventHandler(async (event) => {
         .from('projects')
         .select("*")
         .filter("is_hidden", "eq", "false")
+        .order('created_at', { ascending: false })
 
     return { data, error };
 });

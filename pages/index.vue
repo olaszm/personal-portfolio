@@ -43,14 +43,14 @@ useHead({
 })
 
 const tools = reactive([
-    { name: "HTML 5", icon: "fa-brands fa-html5" },
-    { name: "CSS 3", icon: "fa-brands fa-css3" },
-    { name: "JavaScript", icon: "fa-brands fa-js" },
-    { name: "React.js", icon: "fa-brands fa-react" },
-    { name: "Figma", icon: "fa-brands fa-figma" },
-    { name: "Node.js", icon: "fa-brands fa-node-js" },
-    { name: "Python", icon: "fa-brands fa-python" },
-    { name: "Github", icon: "fa-brands fa-github" },
+    { name: "JavaScript", icon: "devicon-javascript-plain" },
+    { name: "Vue.js", icon: "devicon-vuejs-plain" },
+    { name: "React.js", icon: "devicon-react-plain" },
+    { name: "Gleam", icon: "devicon-gleam-plain" },
+    { name: "Figma", icon: "devicon-figma-plain" },
+    { name: "CSS 3", icon: "devicon-css3-plain" },
+    { name: "Node.js", icon: "devicon-nodejs-plain" },
+    { name: "Sqlite", icon: "devicon-sqlite-plain" },
 ]);
 
 
