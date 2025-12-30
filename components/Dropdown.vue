@@ -36,14 +36,14 @@ const { isOpen } = defineProps<Props>()
 }
 
 @media screen and (max-width: 640px) {
-	.menu-dropdown {
-		width: 100%;
-	}
+    .menu-dropdown {
+        width: 100%;
+    }
 }
 
 @media screen and (max-width: 320px) {
-	.menu-dropdown {
-		width: 100%;
-	}
+    .menu-dropdown {
+        width: 100%;
+    }
 }
 </style>

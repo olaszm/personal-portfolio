@@ -3,6 +3,7 @@ useHead({
     title: 'About'
 })
 
+//TODO: Do a lang switch
 const data = [
     `Hi, My name is Martin and I am a front-end developer from Hungary,
     currently based in Budapest. I've lived and worked 8 years in the UK, London.`,
@@ -10,7 +11,7 @@ const data = [
             with Vue.js with various CSS libraries. I've also worked a fair
             amount with Django and Postgres in the backend while I was working
             as a junior full-stack developer. I am really interested in functional programming so in my spare time I've started learning Gleam`,
-    `Outside of work I enjoy 🧗‍♂️ rock climbing, live concerts and reading
+    `Outside of work I enjoy 🧗‍♂️rock climbing, live concerts and reading
             about software developement.`,
     `If you want to work with me, drop me an email so we can discuss
             about projects and ideas!`

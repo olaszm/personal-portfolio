@@ -1,5 +1,5 @@
 <template>
-    <div class="dropdown-item" :class="itemState" @click="navigateTo(route)">
+    <div tabindex="0" role='button' class="dropdown-item" :class="itemState" @click="navigateTo(route)">
         <ClientOnly v-if="icon" placeholder="Menu">
             <font-awesome-icon class="dropdown-item-icon" size="sm" :icon="icon" />
         </ClientOnly>
@@ -32,7 +32,7 @@ const itemState = computed(() => {
 })
 
 const navigateTo = (route: string) => {
-    if(route.startsWith('/')) {
+    if (route.startsWith('/')) {
         router.push(route)
         return
     }
@@ -58,7 +58,8 @@ const navigateTo = (route: string) => {
     background-color: var(--ascend);
 }
 
-.dropdown-item:active, .active {
+.dropdown-item:active,
+.active {
     background-color: var(--ascend)
 }
 
@@ -77,7 +78,7 @@ const navigateTo = (route: string) => {
     border-radius: 0 0 8px 8px;
 }
 
-@media screen and (max-width: 640px){
+@media screen and (max-width: 640px) {
     .sub-title {
         font-size: 1rem;
     }
