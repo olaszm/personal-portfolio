@@ -1,11 +1,13 @@
-import { serverSupabaseClient } from "#supabase/server";
+import { serverSupabaseClient } from '#supabase/server'
 
 export default eventHandler(async (event) => {
-	const client = serverSupabaseClient(event);
+    const client = await serverSupabaseClient(event)
 
-	let { data: projects, error } = await client
-		.from('projects')
-		.select()
+    let { data, error } = await client
+        .from('projects')
+        .select("*")
+        .filter("is_hidden", "eq", "false")
+        .order('created_at', { ascending: false })
 
-	return { projects, error };
+    return { data, error };
 });

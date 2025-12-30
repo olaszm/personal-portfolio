@@ -2,7 +2,7 @@
     <div class='card'>
         <slot></slot>
     </div>
-</template> 
+</template>
 
 
 <script lang='ts' setup>
@@ -17,12 +17,11 @@ const { variant } = defineProps<Props>()
 
 <style scoped>
 .card {
-	background-color: v-bind('variant');
-	padding: 1rem;
-	border-radius: 8px;
-	height: 100%;
-	width: 100%;
-	transition: all 250ms ease;
+    background-color: v-bind('variant');
+    padding: 1rem;
+    border-radius: 16px;
+    height: 100%;
+    width: 100%;
+    transition: all 250ms ease;
 }
-
 </style>
