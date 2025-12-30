@@ -18,3 +18,5 @@ export interface ProjectsApiResponse {
     data: Project[] | null;
     error: Error | null;
 }
+
+export type langOption = "en" | "hu";
