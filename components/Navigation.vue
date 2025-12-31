@@ -5,9 +5,9 @@
         </NuxtLink>
 
         <div class="button-container">
-            <select @input="handleSelectInput" name="" id="">
-                <option value="en">English</option>
-                <option value="hu">Hungarian</option>
+            <select v-if="route.name === 'about'" @input="handleSelectInput">
+                <option v-for="v in langSelectOptions" :value="v.value" :key="v.value"
+                    :selected='v.value === currentLang'>{{ v.label }}</option>
             </select>
             <Button v-if="!isOpen" class="btn-icon" @click.capture="togglePreference">
                 <ClientOnly placeholder='themeSwitcher'>
@@ -43,7 +43,7 @@ const { currentTheme, togglePreference } = inject<ThemeContext>('theme') || {
     currentTheme: ref('light'),
     togglePreference: () => console.warn('Theme provider not found')
 }
-const { setLang } = inject<LangContext>('lang')!
+const { setLang, currentLang } = inject<LangContext>('lang')!
 const routes = inject<IRoute[]>('nav-routes')
 const { isOpen } = defineProps<Props>()
 
@@ -53,6 +53,7 @@ type ThemeContext = {
 }
 
 type LangContext = {
+    currentLang: Ref<langOption>
     setLang: (lang: langOption) => void;
 }
 
@@ -62,7 +63,7 @@ interface Props {
 }
 
 const router = useRouter()
-
+const route = useRoute()
 const isDropDownMenuOpen = ref(false)
 
 const cardBg = computed(() => {
@@ -72,6 +73,12 @@ const cardBg = computed(() => {
 
 const socialRoutes = computed(() => routes?.filter(r => r.type === 'social'))
 const generalRoutes = computed(() => routes?.filter(r => r.type === 'general'))
+const langSelectOptions = computed(() => {
+    return [
+        { label: 'EN', value: 'en' },
+        { label: 'HU', value: 'hu' },
+    ]
+})
 
 
 const themeSwitcherIcon = computed(() =>

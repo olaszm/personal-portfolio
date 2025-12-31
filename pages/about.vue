@@ -38,6 +38,11 @@ const huData = [
 const data = computed(() => {
     return currentLang.value === 'en' ? enData : huData
 })
+
+const helperText = computed(() => {
+    return currentLang.value === 'en' ? `If you want to download the Hungarian version of my resume, switch the language via
+            the language selector in the navigation.` : `Ha le szeretnéd tölteni az önéletrajzom angol verzióját, váltsd át a nyelvet a navigáció nyelvválasztójával.`
+})
 </script>
 
 
@@ -46,6 +51,7 @@ const data = computed(() => {
         <p v-for='txt, idx in data' :key="idx">
             {{ txt }}
         </p>
+        <small class="helper-text">{{ helperText }}</small>
         <div class="link_container">
             <Button href='mailto:martin1olasz@gmail.com'>say hello</Button>
             <span>◦</span>
@@ -67,5 +73,12 @@ p {
     justify-content: flex-start;
     align-items: center;
     gap: .75rem;
+}
+
+.helper-text {
+    display: inline-flex;
+    font-size: .75rem;
+    opacity: .5;
+    margin-bottom: .95rem;
 }
 </style>
