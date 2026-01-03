@@ -5,10 +5,9 @@
         </NuxtLink>
 
         <div class="button-container">
-            <select v-if="route.name === 'about'" @input="handleSelectInput">
-                <option v-for="v in langSelectOptions" :value="v.value" :key="v.value"
-                    :selected='v.value === currentLang'>{{ v.label }}</option>
-            </select>
+
+            <SelectInput v-if="route.name === 'about'" default-value="Select a language"
+                :select-options="langSelectOptions" @input="handleSelectInput" />
             <Button v-if="!isOpen" class="btn-icon" @click.capture="togglePreference">
                 <ClientOnly placeholder='themeSwitcher'>
                     <font-awesome-icon class="clickable-icon" size="lg" :icon="themeSwitcherIcon" />
@@ -37,6 +36,7 @@
 
 <script lang="ts" setup>
 import IconComponent from "@/assets/logo.svg?component";
+import { SelectInput } from "#components";
 import { computed, inject } from "vue";
 import { type IRoute, type langOption } from '~/utils/types';
 const { currentTheme, togglePreference } = inject<ThemeContext>('theme') || {
@@ -77,7 +77,9 @@ const langSelectOptions = computed(() => {
     return [
         { label: 'EN', value: 'en' },
         { label: 'HU', value: 'hu' },
-    ]
+    ].map(v => {
+        return { ...v, selected: currentLang.value === v.value }
+    })
 })
 
 
