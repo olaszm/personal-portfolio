@@ -1,12 +1,12 @@
 <template>
-    <div tabindex="0" role='button' class="dropdown-item" :class="itemState" @click="navigateTo(route)">
+    <button tabindex="0" class="dropdown-item" :class="itemState" @click="navigateTo(route)">
         <ClientOnly v-if="icon" placeholder="Menu">
             <font-awesome-icon class="dropdown-item-icon" size="sm" :icon="icon" />
         </ClientOnly>
         <span class="sub-title">
             {{ text }}
         </span>
-    </div>
+    </button>
 </template>
 
 
@@ -51,6 +51,10 @@ const navigateTo = (route: string) => {
     align-items: center;
     justify-content: stretch;
     gap: 10px;
+    border: none;
+    width: inherit;
+    background-color: transparent;
+    color: var(--font-color);
 }
 
 .dropdown-item:hover,

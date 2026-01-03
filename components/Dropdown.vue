@@ -1,5 +1,5 @@
 <template>
-    <Card v-if="isOpen" :variant="variant" class='menu-dropdown shadow-lg'>
+    <Card ref="target" v-if="isOpen" :variant="variant" class='menu-dropdown shadow-lg'>
         <slot class='menu-dropdown-inner'>
         </slot>
     </Card>
@@ -7,13 +7,18 @@
 
 
 <script lang="ts" setup>
+import { onClickOutside } from '@vueuse/core';
+
+const targetRef = useTemplateRef('target')
 interface Props {
     isOpen: boolean
     variant: string
 }
 
 const { isOpen } = defineProps<Props>()
+const emits = defineEmits(['close'])
 
+onClickOutside(targetRef, () => emits('close'), { ignore: ['#menu-dropdown'] })
 </script>
 
 

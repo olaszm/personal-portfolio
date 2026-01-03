@@ -17,6 +17,7 @@
         "@fortawesome/free-brands-svg-icons": "^6.1.2",
         "@fortawesome/free-solid-svg-icons": "^6.1.2",
         "@fortawesome/vue-fontawesome": "^3.0.1",
+        "@vueuse/core": "^14.1.0",
         "nuxt": "^3.17.2",
         "sass": "^1.54.5",
         "sass-loader": "^16.0.5"

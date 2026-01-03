@@ -13,14 +13,14 @@
                     <font-awesome-icon class="clickable-icon" size="lg" :icon="themeSwitcherIcon" />
                 </ClientOnly>
             </Button>
-            <Button class="btn-icon menu-overlay-parent" @click.capture="openMenu">
+            <Button class="btn-icon menu-overlay-parent" id="menu-dropdown" @click.capture="openMenu">
                 <ClientOnly placeholder="Menu">
                     <font-awesome-icon class="clickable-icon" size="lg"
                         :icon="!isOpen ? 'fa-solid fa-bars' : 'fa-solid fa-circle-xmark'" />
                 </ClientOnly>
             </Button>
             <Transition>
-                <Dropdown class="navigation-list" :isOpen=isDropDownMenuOpen :variant="cardBg">
+                <Dropdown @close="closeMenu()" class="navigation-list" :isOpen=isDropDownMenuOpen :variant="cardBg">
                     <DropDownItem v-for="item in generalRoutes" :text="item.name" :state="item?.state" :route="item.url"
                         :icon="item.icon">
                     </DropDownItem>
