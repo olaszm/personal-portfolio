@@ -15,7 +15,8 @@
         <div class="container">
             <h2 class="h2">Some of my projects</h2>
 
-            <ProjectCard v-for="project in projects" :title="project.title" :cover_img="project.cover_img">
+            <ProjectCard v-for="project in projects" :title="project.title" :stack="project.stack"
+                :cover_img="project.cover_img">
                 <template v-slot:content>
                     {{ project.description }}
                 </template>
@@ -34,7 +35,6 @@
 <script lang="ts" setup>
 import { reactive } from "vue";
 
-//FIXME: Do error handling here
 const { data } = await useFetch<ProjectsApiResponse>('/api/projects')
 const projects = computed(() => data?.value?.data || [])
 

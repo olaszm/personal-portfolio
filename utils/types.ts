@@ -8,6 +8,7 @@ export interface IRoute {
 
 export type Project = {
     title: string,
+    stack: string[],
     description: string
     cover_img: string,
     host_url: string,

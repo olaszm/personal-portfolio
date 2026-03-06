@@ -8,6 +8,9 @@
             <div class="project_body">
                 <div class="project_title">
                     <h3>{{ title }}</h3>
+                    <div v-if="stack && stack.length !== 0" class="project_stack">
+                        <h5>{{ formatedStack }}</h5>
+                    </div>
                 </div>
                 <div class="project_content">
                     <slot name="content"></slot>
@@ -27,12 +30,16 @@ const { currentTheme } = inject<{ currentTheme: Ref<string> }>('theme') || { cur
 
 interface Props {
     title: string
+    stack: string[]
     cover_img: string
 }
 
-const { title, cover_img } = defineProps<Props>()
+const { title, cover_img, stack } = defineProps<Props>()
 
 const bgColor = computed(() => currentTheme.value === 'dark' ? 'var(--secondary)' : 'var(--grey)')
+const formatedStack = computed(() => {
+    return stack.join(" ● ")
+})
 
 
 const coverImgPath = computed(() => {
@@ -57,6 +64,12 @@ const coverImgPath = computed(() => {
     color: var(--black);
     font-size: 1.3rem;
     font-weight: bold;
+}
+
+.project_stack {
+    color: var(--black);
+    font-size: max(10px, .9rem);
+    font-weight: normal;
 }
 
 .project_body {
