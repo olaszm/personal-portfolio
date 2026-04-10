@@ -6,7 +6,7 @@
 
     <div class="button-container">
 
-      <SelectInput v-if="route.name === 'about'" default-value="Select a language" :select-options="langSelectOptions"
+      <SelectInput default-value="Select a language" :select-options="langSelectOptions"
         @input="handleSelectInput" />
       <Button v-if="!isOpen" class="btn-icon" @click.capture="togglePreference">
         <ClientOnly placeholder='themeSwitcher'>
@@ -21,13 +21,13 @@
       </Button>
       <Transition>
         <Dropdown @close="closeMenu()" class="navigation-list" :isOpen=isDropDownMenuOpen :variant="cardBg">
-          <DropDownItem v-for="item in generalRoutes" :text="item.name" :state="item?.state" :route="item.url"
+          <DropDownItem v-for="item in generalRoutes" :key="item.url" :text="item.name" :state="item?.state" :route="item.url"
             :icon="item.icon">
           </DropDownItem>
 
           <DropdownSeparator />
 
-          <DropDownItem v-for="item in socialRoutes" :text="item.name" :route="item.url" :icon="item.icon" />
+          <DropDownItem v-for="item in socialRoutes" :key="item.url" :text="item.name" :route="item.url" :icon="item.icon" />
         </Dropdown>
       </Transition>
     </div>
@@ -44,7 +44,7 @@ const { currentTheme, togglePreference } = inject<ThemeContext>('theme') || {
   togglePreference: () => console.warn('Theme provider not found')
 }
 const { setLang, currentLang } = inject<LangContext>('lang')!
-const routes = inject<IRoute[]>('nav-routes')
+const routes = inject<Ref<IRoute[]>>('nav-routes')
 const { isOpen } = defineProps<Props>()
 
 type ThemeContext = {
@@ -62,7 +62,6 @@ interface Props {
 }
 
 const router = useRouter()
-const route = useRoute()
 const isDropDownMenuOpen = ref(false)
 
 const cardBg = computed(() => {
@@ -70,8 +69,8 @@ const cardBg = computed(() => {
 })
 
 
-const socialRoutes = computed(() => routes?.filter(r => r.type === 'social'))
-const generalRoutes = computed(() => routes?.filter(r => r.type === 'general'))
+const socialRoutes = computed(() => routes?.value?.filter(r => r.type === 'social'))
+const generalRoutes = computed(() => routes?.value?.filter(r => r.type === 'general'))
 const langSelectOptions = computed(() => {
   return [
     { label: 'EN', value: 'en' },

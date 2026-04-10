@@ -16,8 +16,8 @@
 import { type IRoute } from '../utils/types';
 import { inject } from 'vue'
 
-const routes = inject<IRoute[]>('nav-routes')
-const socials = computed(() => routes?.filter((r) => r.type === 'social'))
+const routes = inject<Ref<IRoute[]>>('nav-routes')
+const socials = computed(() => routes?.value?.filter((r) => r.type === 'social'))
 </script>
 
 

@@ -2,24 +2,23 @@
   <div class="container">
     <div>
       <h1 class="intro_title">
-        Hello! I’m Martin a passionate full-stack developer based in
-        Budapest, Hungary
+        {{ texts.intro }}
       </h1>
-      <NuxtLink class="btn intro_title_link" to="/about">Want to know me better?</NuxtLink>
+      <NuxtLink class="btn intro_title_link" to="/about">{{ texts.cta }}</NuxtLink>
     </div>
 
     <div class="container">
-      <h2 class="h2">Some of my favourite tools to work with</h2>
+      <h2 class="h2">{{ texts.toolsHeading }}</h2>
       <ToolRow :tools="tools.slice(0, tools.length)" />
     </div>
 
     <div class="container">
-      <h2 class="h2">Previous experiences</h2>
+      <h2 class="h2">{{ texts.workHeading }}</h2>
       <Timeline />
     </div>
 
     <div class="container">
-      <h2 class="h2">Some of my projects</h2>
+      <h2 class="h2">{{ texts.projectsHeading }}</h2>
 
       <ProjectCard v-for="project in projects" :title="project.title" :stack="project.stack"
         :cover_img="project.cover_img">
@@ -27,11 +26,11 @@
           {{ project.description }}
         </template>
         <template v-slot:footer>
-          <Button v-if="project.host_url" :href="project.host_url">see live</Button>
+          <Button v-if="project.host_url" :href="project.host_url">{{ texts.seeLive }}</Button>
           <span>
             ●
           </span>
-          <Button v-if="project.source_url" :href="project.source_url">see source</Button>
+          <Button v-if="project.source_url" :href="project.source_url">{{ texts.seeSource }}</Button>
         </template>
       </ProjectCard>
     </div>
@@ -40,10 +39,39 @@
 
 <script lang="ts" setup>
 import { Timeline } from "#components";
-import { reactive } from "vue";
+import { reactive, inject, computed } from "vue";
+import { type langOption } from '~/utils/types'
+import { localizeProject } from '~/utils/dto';
+
+type LangContext = { currentLang: Ref<langOption> }
+const { currentLang } = inject<LangContext>('lang')!
+
+const enTexts = {
+  intro: "Hello! I'm Martin a passionate full-stack developer based in Budapest, Hungary",
+  cta: "Want to know me better?",
+  toolsHeading: "Some of my favourite tools to work with",
+  workHeading: "Previous experiences",
+  projectsHeading: "Some of my projects",
+  seeLive: "see live",
+  seeSource: "see source",
+}
+
+const huTexts = {
+  intro: "Szia! Martin vagyok, szenvedélyes full-stack fejlesztő Budapestről, Magyarországról",
+  cta: "Szeretnél jobban megismerni?",
+  toolsHeading: "Néhány kedvenc eszközöm",
+  workHeading: "Korábbi tapasztalatok",
+  projectsHeading: "Néhány projektem",
+  seeLive: "megtekintés",
+  seeSource: "forráskód",
+}
+
+const texts = computed(() => currentLang.value === 'en' ? enTexts : huTexts)
 
 const { data } = await useFetch<ProjectsApiResponse>('/api/projects')
-const projects = computed(() => data?.value?.data || [])
+const projects = computed(() =>
+  (data?.value?.data ?? []).map(p => localizeProject(p, currentLang.value))
+)
 
 useHead({
   title: 'Home',

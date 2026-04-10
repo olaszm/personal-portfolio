@@ -9,10 +9,14 @@ export interface IRoute {
 export type Project = {
     title: string,
     stack: string[],
-    description: string
+    description: string,
     cover_img: string,
     host_url: string,
     source_url: string,
+    translations?: Partial<Record<Exclude<langOption, 'en'>, {
+        title?: string,
+        description?: string,
+    }>>
 }
 
 export interface ProjectsApiResponse {

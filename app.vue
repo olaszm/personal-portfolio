@@ -4,7 +4,7 @@
       <menu-overlay v-if="isOpen" :toggleModal='() => { toggleModal() }' :isOpen="isOpen" />
       <div class="container">
 
-        <navigation :toggleModal='() => { toggleModal() }' :isOpen="isOpen" :togglePreference="togglePreference" />
+        <navigation :isOpen="isOpen" />
 
         <NuxtLoadingIndicator color="#fca523" />
 
@@ -22,7 +22,7 @@
 
 
 <script lang="ts" setup>
-import { provide } from "vue";
+import { provide, computed } from "vue";
 import { useTheme } from "@/composables/useTheme";
 import { useLang } from "@/composables/useLang";
 import { useToggleModal } from '@/composables/useToggleModal';
@@ -45,23 +45,21 @@ const { togglePreference, currentTheme } = useTheme();
 const { toggleModal, isOpen } = useToggleModal()
 const { currentLang, setLang } = useLang()
 
-const routes: IRoute[] = reactive([
-  { name: 'Home', url: '/', icon: 'fa-solid fa-house', type: 'general' },
-  { name: 'About', url: '/about', icon: 'fa-solid fa-address-card', type: 'general' },
-  { name: 'Projects', url: '/projects', icon: 'fa-solid fa-laptop-code', type: 'general' },
-  {
-    name: "LinkedIn",
-    url: "https://www.linkedin.com/in/martin-o-a038671b5/",
-    icon: "fa-brands fa-linkedin",
-    type: 'social'
-  },
-  {
-    name: "GitHub",
-    url: "https://github.com/olaszm",
-    icon: "fa-brands fa-github",
-    type: 'social'
-  },
-])
+const routeNames = {
+  en: { home: 'Home', about: 'About', projects: 'Projects' },
+  hu: { home: 'Főoldal', about: 'Rólam', projects: 'Projektek' },
+}
+
+const routes = computed<IRoute[]>(() => {
+  const n = routeNames[currentLang.value]
+  return [
+    { name: n.home, url: '/', icon: 'fa-solid fa-house', type: 'general' },
+    { name: n.about, url: '/about', icon: 'fa-solid fa-address-card', type: 'general' },
+    { name: n.projects, url: '/projects', icon: 'fa-solid fa-laptop-code', type: 'general' },
+    { name: "LinkedIn", url: "https://www.linkedin.com/in/martin-o-a038671b5/", icon: "fa-brands fa-linkedin", type: 'social' },
+    { name: "GitHub", url: "https://github.com/olaszm", icon: "fa-brands fa-github", type: 'social' },
+  ]
+})
 
 provide('theme', { currentTheme, togglePreference })
 provide('lang', { currentLang, setLang })
