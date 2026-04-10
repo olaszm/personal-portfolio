@@ -1,13 +1,16 @@
 import { serverSupabaseClient } from '#supabase/server'
+import type { Project } from '~/utils/types'
 
-export default eventHandler(async (event) => {
-    const client = await serverSupabaseClient(event)
+export default defineEventHandler(async (event): Promise<Project[]> => {
+  const client = await serverSupabaseClient(event)
 
-    let { data, error } = await client
-        .from('projects')
-        .select("*")
-        .filter("is_hidden", "eq", "false")
-        .order('created_at', { ascending: false })
+  const { data, error } = await client
+    .from('projects')
+    .select('*')
+    .eq('is_hidden', false)
+    .order('created_at', { ascending: false })
 
-    return { data, error };
-});
+  if (error) throw createError({ statusCode: 500, message: error.message })
+
+  return data
+})

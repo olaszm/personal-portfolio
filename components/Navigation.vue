@@ -6,8 +6,7 @@
 
     <div class="button-container">
 
-      <SelectInput default-value="Select a language" :select-options="langSelectOptions"
-        @input="handleSelectInput" />
+      <SelectInput default-value="Select a language" :select-options="langSelectOptions" @input="handleSelectInput" />
       <Button v-if="!isOpen" class="btn-icon" @click.capture="togglePreference">
         <ClientOnly placeholder='themeSwitcher'>
           <font-awesome-icon class="clickable-icon" size="lg" :icon="themeSwitcherIcon" />
@@ -21,13 +20,14 @@
       </Button>
       <Transition>
         <Dropdown @close="closeMenu()" class="navigation-list" :isOpen=isDropDownMenuOpen :variant="cardBg">
-          <DropDownItem v-for="item in generalRoutes" :key="item.url" :text="item.name" :state="item?.state" :route="item.url"
-            :icon="item.icon">
+          <DropDownItem v-for="item in generalRoutes" :key="item.url" :text="item.name" :state="item?.state"
+            :route="item.url" :icon="item.icon">
           </DropDownItem>
 
           <DropdownSeparator />
 
-          <DropDownItem v-for="item in socialRoutes" :key="item.url" :text="item.name" :route="item.url" :icon="item.icon" />
+          <DropDownItem v-for="item in socialRoutes" :key="item.url" :text="item.name" :route="item.url"
+            :icon="item.icon" />
         </Dropdown>
       </Transition>
     </div>
@@ -36,7 +36,7 @@
 
 <script lang="ts" setup>
 import IconComponent from "@/assets/logo.svg?component";
-import { SelectInput } from "#components";
+import SelectInput from "../components/SelectInput.vue";
 import { computed, inject } from "vue";
 import { type IRoute, type langOption } from '~/utils/types';
 const { currentTheme, togglePreference } = inject<ThemeContext>('theme') || {

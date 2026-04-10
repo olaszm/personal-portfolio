@@ -10,29 +10,37 @@ type LangContext = {
 }
 
 const enData = [
-  `Hi, My name is Martin and I am a front-end developer from Hungary,
-    currently based in Budapest. I've lived and worked 8 years in the UK, London.`,
-  `My largest body of work has been building front-end applications
-            with Vue.js with various CSS libraries. I've also worked a fair
-            amount with Django and Postgres in the backend while I was working
-            as a junior full-stack developer. I am really interested in functional programming so in my spare time I've started learning Gleam`,
-  `Outside of work I enjoy 🧗‍♂️rock climbing, live concerts and reading
-            about software developement.`,
-  `If you want to work with me, drop me an email so we can discuss
-            about projects and ideas!`
+  `Hi, I'm Martin — a frontend engineer with 4+ years of experience building
+  production web apps in React and Vue.js, always with TypeScript.`,
+  `Most of my recent work has been at StoryStream, where I've tackled the kind of
+  problems that don't have clean solutions: incrementally migrating a 200k+ line
+  Angular codebase to Vue without stopping the product, and building an embeddable
+  widget experience that runs across dozens of client sites with an isolated,
+  lightweight bundle. I care about frontend architecture, performance, and codebases
+  that scale.`,
+  `I also have backend experience from an earlier fullstack role — Django REST
+  APIs, PostgreSQL — so I'm comfortable working across the stack when needed.`,
+  `Outside of work: rock climbing, live concerts, and learning Gleam (functional
+  programming for the curious).`,
+  `I'm currently open to remote frontend or fullstack roles. If something looks
+  interesting, drop me an email.`,
 ]
 
 const huData = [
-  `Hello, a nevem Martin és front-end fejlesztő vagyok Magyarországról,
-    jelenleg Budapesten élek. 8 évet éltem és dolgoztam az Egyesült Királyságban, Londonban.`,
-  `A legnagyobb munkám front-end alkalmazások fejlesztése volt
-            Vue.js-sel különböző CSS könyvtárakkal. Elég sokat dolgoztam
-            Django-val és Postgres-szel is a backend oldalon, amikor
-            junior full-stack fejlesztőként dolgoztam. Nagyon érdekel a funkcionális programozás, így szabadidőmben elkezdtem tanulni a Gleam-et`,
-  `Munkán kívül szeretek 🧗‍♂️ sziklamászni, élő koncertekre járni és
-            szoftverfejlesztésről olvasni.`,
-  `Ha szeretnél velem dolgozni, küldj egy emailt, hogy
-            megbeszélhessük a projekteket és ötleteket!`
+  `Hello, Martin vagyok — frontend fejlesztő, 4+ év tapasztalattal production
+  webalkalmazások építésében React és Vue.js alapokon, TypeScript-tel.`,
+  `Az elmúlt évek munkájának nagy részét a StoryStream-nél töltöttem, ahol olyan
+  problémákkal foglalkoztam, amelyeknek nincs tiszta megoldásuk: egy 200k+ soros
+  Angular kódbázis inkrementális Vue-ra migrálása a termékfejlesztés megállítása
+  nélkül, illetve egy beágyazható widget experience építés, amely tucat ügyfél
+  weboldalán fut. Fontos számomra a frontend
+  architektúra, a teljesítmény és a skálázható kódbázisok.`,
+  `Korábbi fullstack szerepkörömből backend tapasztalatom is van — Node.js, Django REST
+  API-ok, PostgreSQL — így szükség esetén a teljes stacken tudok dolgozni.`,
+  `Munkán kívül: sziklamászás, koncertek és Gleam tanulás (funkcionális programozás
+   kíváncsiskodóknak).`,
+  `Jelenleg nyitott vagyok remote frontend vagy fullstack pozíciókra. Ha valami
+  érdekesnek tűnik, írj egy emailt!`,
 ]
 const data = computed(() => {
   return currentLang.value === 'en' ? enData : huData

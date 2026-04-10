@@ -22,7 +22,7 @@
 
 <script setup lang="ts">
 import { inject, computed } from 'vue'
-import { type langOption } from '~/utils/types'
+import { type langOption, type Project } from '~/utils/types'
 import { localizeProject } from '~/utils/dto'
 
 type LangContext = { currentLang: Ref<langOption> }
@@ -46,9 +46,9 @@ useHead({
   title: 'Projects'
 })
 
-const { data } = await useFetch<ProjectsApiResponse>('/api/projects')
+const { data } = await useFetch<Project[]>('/api/projects')
 const projects = computed(() =>
-  (data?.value?.data ?? []).map(p => localizeProject(p, currentLang.value))
+  (data?.value ?? []).map(p => localizeProject(p, currentLang.value))
 )
 
 </script>

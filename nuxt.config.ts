@@ -14,6 +14,11 @@ export default defineNuxtConfig({
       ]
     }
   },
+  vue: {
+    compilerOptions: {
+      isCustomElement: (tag) => tag === 'selectedcontent',
+    },
+  },
   vite: {
     plugins: [svgLoader()],
   },

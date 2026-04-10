@@ -19,6 +19,7 @@
         "@fortawesome/vue-fontawesome": "^3.0.1",
         "@nuxt/ui": "^4.6.1",
         "@vueuse/core": "^14.1.0",
+        "marked": "^18.0.0",
         "nuxt": "^4.4.2",
         "sass": "^1.54.5",
         "sass-loader": "^16.0.5",

@@ -40,7 +40,7 @@
 <script lang="ts" setup>
 import { Timeline } from "#components";
 import { reactive, inject, computed } from "vue";
-import { type langOption } from '~/utils/types'
+import { type langOption, type Project } from '~/utils/types'
 import { localizeProject } from '~/utils/dto';
 
 type LangContext = { currentLang: Ref<langOption> }
@@ -68,9 +68,9 @@ const huTexts = {
 
 const texts = computed(() => currentLang.value === 'en' ? enTexts : huTexts)
 
-const { data } = await useFetch<ProjectsApiResponse>('/api/projects')
+const { data } = await useFetch<Project[]>('/api/projects')
 const projects = computed(() =>
-  (data?.value?.data ?? []).map(p => localizeProject(p, currentLang.value))
+  (data?.value ?? []).map(p => localizeProject(p, currentLang.value))
 )
 
 useHead({
