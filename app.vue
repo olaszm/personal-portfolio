@@ -1,59 +1,65 @@
 <template>
+  <UApp>
     <div id="app">
-        <menu-overlay v-if="isOpen" :toggleModal='() => { toggleModal() }' :isOpen="isOpen" />
-        <div class="container">
-            <navigation :toggleModal='() => { toggleModal() }' :isOpen="isOpen" :togglePreference="togglePreference" />
-            <NuxtLoadingIndicator color="#fca523" />
-            <NuxtLayout name="default">
-                <NuxtPage class="main" />
-            </NuxtLayout>
-            <custom-footer />
-        </div>
+      <menu-overlay v-if="isOpen" :toggleModal='() => { toggleModal() }' :isOpen="isOpen" />
+      <div class="container">
+
+        <navigation :isOpen="isOpen" />
+
+        <NuxtLoadingIndicator color="#fca523" />
+
+        <UMain>
+          <NuxtLayout name="default">
+            <NuxtPage class="main" />
+          </NuxtLayout>
+        </UMain>
+
+        <custom-footer />
+      </div>
     </div>
+  </UApp>
 </template>
 
 
 <script lang="ts" setup>
-import { provide } from "vue";
+import { provide, computed } from "vue";
 import { useTheme } from "@/composables/useTheme";
 import { useLang } from "@/composables/useLang";
 import { useToggleModal } from '@/composables/useToggleModal';
 import { type IRoute } from '~/utils/types';
 
 useHead({
-    titleTemplate: (titleChunk) => { return titleChunk ? `${titleChunk} - Martin Olasz` : 'Martin Olasz'; },
-    link: [{ rel: 'icon', type: 'image/png', href: '/favicon.png' }],
-    meta: [
-        { name: 'description', content: `Front-end developer building modern web applications with cutting edge technologies.` },
-        {
-            name: "keywords",
-            content:
-                "developer, freelance, front-end, website, vue, react,javascript, html, css, london,",
-        },
-    ]
+  titleTemplate: (titleChunk) => { return titleChunk ? `${titleChunk} - Martin Olasz` : 'Martin Olasz'; },
+  link: [{ rel: 'icon', type: 'image/png', href: '/favicon.png' }],
+  meta: [
+    { name: 'description', content: `Front-end developer building modern web applications with cutting edge technologies.` },
+    {
+      name: "keywords",
+      content:
+        "developer, freelance, front-end, website, vue, react, javascript, html, css, hungary, budapest",
+    },
+  ]
 })
 
 const { togglePreference, currentTheme } = useTheme();
 const { toggleModal, isOpen } = useToggleModal()
 const { currentLang, setLang } = useLang()
 
-const routes: IRoute[] = reactive([
-    { name: 'Home', url: '/', icon: 'fa-solid fa-house', type: 'general' },
-    { name: 'About', url: '/about', icon: 'fa-solid fa-address-card', type: 'general' },
-    { name: 'Projects', url: '/projects', icon: 'fa-solid fa-laptop-code', type: 'general' },
-    {
-        name: "LinkedIn",
-        url: "https://www.linkedin.com/in/martin-o-a038671b5/",
-        icon: "fa-brands fa-linkedin",
-        type: 'social'
-    },
-    {
-        name: "GitHub",
-        url: "https://github.com/olaszm",
-        icon: "fa-brands fa-github",
-        type: 'social'
-    },
-])
+const routeNames = {
+  en: { home: 'Home', about: 'About', projects: 'Projects' },
+  hu: { home: 'Főoldal', about: 'Rólam', projects: 'Projektek' },
+}
+
+const routes = computed<IRoute[]>(() => {
+  const n = routeNames[currentLang.value]
+  return [
+    { name: n.home, url: '/', icon: 'fa-solid fa-house', type: 'general' },
+    { name: n.about, url: '/about', icon: 'fa-solid fa-address-card', type: 'general' },
+    { name: n.projects, url: '/projects', icon: 'fa-solid fa-laptop-code', type: 'general' },
+    { name: "LinkedIn", url: "https://www.linkedin.com/in/martin-o-a038671b5/", icon: "fa-brands fa-linkedin", type: 'social' },
+    { name: "GitHub", url: "https://github.com/olaszm", icon: "fa-brands fa-github", type: 'social' },
+  ]
+})
 
 provide('theme', { currentTheme, togglePreference })
 provide('lang', { currentLang, setLang })
@@ -64,23 +70,20 @@ provide('nav-routes', routes)
 
 
 <style>
-@import '@/assets/css/main.css';
-
-
 #app {
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    overflow: hidden;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  overflow: hidden;
 }
 
 .main {
-    min-height: 100vh;
+  min-height: 100vh;
 }
 
 body {
-    height: 100%;
-    width: 100%;
-    scroll-behavior: smooth;
-    position: relative;
+  height: 100%;
+  width: 100%;
+  scroll-behavior: smooth;
+  position: relative;
 }
 </style>
