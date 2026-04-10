@@ -1,3 +1,5 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
 @import '@/assets/css/normalize.css';
 @import '@/assets/css/variables.css';
 @import '@/assets/css/typo.css';
@@ -14,21 +16,18 @@ body {
 	overflow-x: hidden;
 }
 
-body {
-	transition: background 220ms ease-in-out;
-}
-
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	font-family: inherit;
+	transition: background-color 220ms ease-in-out, color 220ms ease-in-out, border-color 220ms ease-in-out;
 }
 
 a {
     text-decoration: underline;
     color: var(--font-color);
-	transition: 220ms all ease-in-out;
-
+    transition: 220ms all ease-in-out;
 }
 
 a:hover, a:focus {
