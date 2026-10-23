@@ -12,11 +12,7 @@ interface Props {
     size?: 'sm' | 'md' | 'lg'
 }
 
-const { size, bgcolor, text = 'bruh'} = withDefaults(defineProps<Props>(), {
-    text: 'new feature',
-    bgcolor: 'var(--secondary)',
-    size: 'sm'
-}) 
+const { size = 'sm', bgcolor = 'var(--secondary)', text = 'new feature' } = defineProps<Props>()
 
 
 const tabClasses = computed(() => ({

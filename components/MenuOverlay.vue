@@ -6,7 +6,7 @@
             <nav class="menu_nav">
                 <li class="menu_nav_item" v-for="item in routes" @click.prevent="closeMenuOverlayOnNavigation(item.route)">
                     <NuxtLink>
-                         {{ item.name.replace(item.name[0], item.name[0].toUpperCase()) }}
+                         {{ item.name.charAt(0).toUpperCase() + item.name.slice(1) }}
                      </NuxtLink>
                 </li>
             </nav>

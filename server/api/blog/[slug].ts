@@ -4,6 +4,7 @@ import type { Blog } from "~/utils/types";
 export default defineEventHandler(async (event): Promise<Blog> => {
   const client = await serverSupabaseClient(event)
   const slug = getRouterParam(event, 'slug')
+  if (!slug) throw createError({ statusCode: 400, message: 'Missing slug' })
 
   const { data, error } = await client
     .from('blog')
